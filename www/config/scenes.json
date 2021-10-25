@@ -1,0 +1,154 @@
+{
+    "firstLevel": "level1",
+    "_global": {
+        "resources": [
+            {
+                "name": "time"
+            },
+            {
+                "name": "pixelCanvas",
+                "initOptions": {
+                    "scale": 5.0
+                }
+            },
+            {
+                "name": "camera",
+                "initOptions": {
+                    "initQueryResources": [
+                        "pixelCanvas"
+                    ],
+                    "screenWidth": 800,
+                    "screenHeight": 600,
+                    "backgroundColor": "#595652",
+                    "deadzoneSize": {
+                        "width": 10,
+                        "height": 10
+                    },
+                    "animationSmoothness": 10
+                }
+            },
+            {
+                "name": "input",
+                "initOptions": {
+                    "defaultKeys": [
+                        {
+                            "type": "gamepadButton",
+                            "button": "xbox_LEFT",
+                            "action": "left"
+                        },
+                        {
+                            "type": "gamepadButton",
+                            "button": "xbox_RIGHT",
+                            "action": "right"
+                        },
+                        {
+                            "type": "gamepadButton",
+                            "button": "xbox_START",
+                            "action": "menu"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "Enter",
+                            "action": "menu"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "ArrowLeft",
+                            "action": "left"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "ArrowRight",
+                            "action": "right"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "ArrowUp",
+                            "action": "up"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "ArrowDown",
+                            "action": "down"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "q",
+                            "action": "left"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "a",
+                            "action": "left"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "d",
+                            "action": "right"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "z",
+                            "action": "up"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "w",
+                            "action": "up"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "s",
+                            "action": "down"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "level1": {
+        "resources": [
+            {
+                "name": "levelMap",
+                "initOptions": {
+                    "url": "www/levelmap1.json",
+                    "tileWidth": 16,
+                    "tileHeight": 16
+                }
+            },
+            {
+                "name": "terrainSheet",
+                "initOptions": {
+                    "sheetConfigUrl": "assets/office_terrain_tilemap.json",
+                    "sheetSrc": "assets/office_terrain_tilemap.png",
+                    "tileWidth": 16,
+                    "tileHeight": 16
+                }
+            },
+            {
+                "name": "physics",
+                "initOptions": {
+                    "speedDecay": 0.75,
+                    "gravity": 230
+                }
+            }
+        ],
+        "systems": {
+            "init": [
+                "spawnTiles",
+                "spawnPlayer"
+            ],
+            "frameMain": [
+                "moveCamera",
+                "moveMobiles",
+                "handleInput"
+            ],
+            "frameEnd": [
+                "updateSpriteAnimation",
+                "clearBackground",
+                "renderSprites"
+            ]
+        },
+        "next": "level1"
+    }
+}

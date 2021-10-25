@@ -1,0 +1,197 @@
+{
+    "cellWidth": 16,
+    "cellHeight": 16,
+    "defaultPose": "WalkPanicLeft",
+    "layout": [
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "WalkRight",
+                "facing": "Right",
+                "action": "Walk"
+            },
+            "animation": {
+                "length": 3,
+                "type": "pingpong",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "WalkLeft",
+                "facing": "Left",
+                "action": "Walk"
+            },
+            "animation": {
+                "length": 3,
+                "type": "pingpong",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "TalkRight",
+                "facing": "Right",
+                "action": "*unused*"
+            },
+            "animation": {
+                "length": 2,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "TalkLeft",
+                "facing": "Left",
+                "action": "*unused*"
+            },
+            "animation": {
+                "length": 2,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "CloseFolderRight",
+                "facing": "Right",
+                "action": "*unused*"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "CloseFolderWigRight",
+                "facing": "Right",
+                "action": "*unused*"
+            },
+            "animation": {
+                "length": 4,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "WalkPanicRight",
+                "facing": "Right",
+                "action": "WalkPanic"
+            },
+            "animation": {
+                "length": 3,
+                "type": "pingpong",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "WalkPanicLeft",
+                "facing": "Left",
+                "action": "WalkPanic"
+            },
+            "animation": {
+                "length": 3,
+                "type": "pingpong",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "JumpRight",
+                "facing": "Right",
+                "action": "Jump"
+            },
+            "animation": {
+                "length": 1,
+                "type": "none"
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "JumpLeft",
+                "facing": "Left",
+                "action": "Jump"
+            },
+            "animation": {
+                "length": 1,
+                "type": "none"
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "PinnnedLeft",
+                "facing": "Left",
+                "action": "Pinned"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "PinnnedRight",
+                "facing": "Right",
+                "action": "Pinned"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        }
+    ]
+}

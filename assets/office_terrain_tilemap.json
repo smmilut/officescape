@@ -1,0 +1,617 @@
+{
+    "defaultTheme": "office",
+    "layout": [
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                0,
+                0
+            ],
+            "midRight": [
+                "wall"
+            ],
+            "botCenter": [
+                "wall"
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                1,
+                0
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "botCenter": [
+                "wall"
+            ],
+            "midRight": [
+                "wall"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                2,
+                0
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "botCenter": [
+                "wall"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                3,
+                0
+            ],
+            "botCenter": [
+                "wall"
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                0,
+                1
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "midRight": [
+                "wall"
+            ],
+            "botCenter": [
+                "wall"
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                1,
+                1
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "midRight": [
+                "wall"
+            ],
+            "botCenter": [
+                "wall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                2,
+                1
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "botCenter": [
+                "wall"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                3,
+                1
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "botCenter": [
+                "wall"
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                0,
+                2
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "midRight": [
+                "wall"
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                1,
+                2
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "midRight": [
+                "wall"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                2,
+                2
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                3,
+                2
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ],
+            "topCenter": [
+                "wall"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                0,
+                3
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "wall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                1,
+                3
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "wall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                2,
+                3
+            ],
+            "midLeft": [
+                "wall"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "wall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                3,
+                3
+            ],
+            "midLeft": [
+                "none", "edgeWall", "edge"
+            ],
+            "topCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "botCenter": [
+                "none", "edgeWall", "edge"
+            ],
+            "midRight": [
+                "none", "edgeWall", "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                8,
+                0
+            ],
+            "midLeft": [
+                "edge"
+            ],
+            "topCenter": [
+                "edge"
+            ],
+            "botCenter": [
+                "edgeWall"
+            ],
+            "midRight": [
+                "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                8,
+                1
+            ],
+            "midLeft": [
+                "edge"
+            ],
+            "topCenter": [
+                "edgeWall"
+            ],
+            "botCenter": [
+                "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                8,
+                2
+            ],
+            "midLeft": [
+                "edge"
+            ],
+            "topCenter": [
+                "edgeWall"
+            ],
+            "botCenter": [
+                "edge"
+            ],
+            "midRight": [
+                "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                9,
+                0
+            ],
+            "midLeft": [
+                "edgeWall"
+            ],
+            "topCenter": [
+                "edge"
+            ],
+            "midRight": [
+                "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                9,
+                2
+            ],
+            "midLeft": [
+                "edgeWall"
+            ],
+            "midRight": [
+                "edgeWall"
+            ],
+            "botCenter": [
+                "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                10,
+                0
+            ],
+            "midLeft": [
+                "edgeWall"
+            ],
+            "midRight": [
+                "edge"
+            ],
+            "topCenter": [
+                "edge"
+            ],
+            "botCenter": [
+                "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                10,
+                1
+            ],
+            "midRight": [
+                "edge"
+            ],
+            "topCenter": [
+                "edgeWall"
+            ],
+            "botCenter": [
+                "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "edgeWall",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "cellPosition": [
+                10,
+                2
+            ],
+            "midLeft": [
+                "edgeWall"
+            ],
+            "midRight": [
+                "edge"
+            ],
+            "topCenter": [
+                "edgeWall"
+            ],
+            "botCenter": [
+                "edge"
+            ]
+        }
+    ]
+}
