@@ -185,7 +185,10 @@ function spawnTile(
         const drawPosition = Sprites.newComponent_drawPosition({
             drawCenter: cellInfo.drawCenter,
         });
-        const worldPosition = Physics.newComponent_worldPosition(tileCenter);
+        const worldPosition = Physics.newComponent_worldPosition({
+            x: tileCenter.x + cellInfo.drawCenter.x - cellInfo.tileCenter.x,
+            y: tileCenter.y + cellInfo.drawCenter.y - cellInfo.tileCenter.y,
+        });
         const sourceColumn = cellInfo.cellPosition[0];
         const sourceRow = cellInfo.cellPosition[1];
         const cellWidth = cellInfo.cellWidth;

@@ -10,6 +10,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 0,
                 0
@@ -33,6 +37,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -62,6 +70,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 2,
                 0
@@ -85,6 +97,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -114,6 +130,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 0,
                 1
@@ -137,6 +157,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -166,6 +190,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 2,
                 1
@@ -189,6 +217,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -218,6 +250,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 0,
                 2
@@ -241,6 +277,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -270,6 +310,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 2,
                 2
@@ -293,6 +337,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -322,6 +370,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 0,
                 3
@@ -345,6 +397,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -374,6 +430,10 @@
                 "x": 8,
                 "y": 24
             },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
             "cellPosition": [
                 2,
                 3
@@ -397,6 +457,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -423,6 +487,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 16
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -449,6 +517,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 1,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -472,6 +544,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 32
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -498,6 +574,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 16
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -522,6 +602,10 @@
             "cellHeight": 32,
             "drawCenter": {
                 "x": 8,
+                "y": 32
+            },
+            "tileCenter":{
+                "x": 8,
                 "y": 24
             },
             "cellPosition": [
@@ -544,6 +628,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 16
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -570,6 +658,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 15,
+                "y": 24
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
@@ -593,6 +685,10 @@
             "cellWidth": 16,
             "cellHeight": 32,
             "drawCenter": {
+                "x": 8,
+                "y": 32
+            },
+            "tileCenter":{
                 "x": 8,
                 "y": 24
             },
