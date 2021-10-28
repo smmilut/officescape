@@ -186,9 +186,20 @@ function spawnTile(
             drawCenter: cellInfo.drawCenter,
         });
         const worldPosition = Physics.newComponent_worldPosition({
-            x: tileCenter.x + cellInfo.drawCenter.x - cellInfo.tileCenter.x,
-            y: tileCenter.y + cellInfo.drawCenter.y - cellInfo.tileCenter.y,
+            x: tileCenter.x - cellInfo.tileCenter.x + cellInfo.drawCenter.x,
+            y: tileCenter.y - cellInfo.tileCenter.y + cellInfo.drawCenter.y,
         });
+        const collisionRectanglesOptions = cellInfo.collisionRectangles.map(
+            /** Convert from configured `topLeftRelativePosition` (easy to input manually) to useful `positionRelativeToAnchor` */
+            function convertAnchorPosition(rectOptions) {
+                rectOptions.positionRelativeToAnchor = {};
+                rectOptions.positionRelativeToAnchor.x = rectOptions.topLeftRelativePosition.x + rectOptions.size.x / 2.0 - cellInfo.drawCenter.x;
+                rectOptions.positionRelativeToAnchor.y = rectOptions.topLeftRelativePosition.y + rectOptions.size.y / 2.0 - cellInfo.drawCenter.y;
+                return rectOptions;
+            });
+        const collisionRectangles = Physics.newCollisionRectangles(collisionRectanglesOptions);
+        collisionRectangles.updatePosition(worldPosition);
+
         const sourceColumn = cellInfo.cellPosition[0];
         const sourceRow = cellInfo.cellPosition[1];
         const cellWidth = cellInfo.cellWidth;
@@ -212,6 +223,7 @@ function spawnTile(
             const tileEntity = engine.spawn()
                 .addComponent(drawPosition)
                 .addComponent(worldPosition)
+                .addComponent(collisionRectangles)
                 .addComponent(spriteImage);
             resolve(tileEntity);
         });

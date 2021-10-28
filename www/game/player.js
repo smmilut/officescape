@@ -59,6 +59,16 @@ async function spawnNewPlayer(engine, pixelCanvas, tileCenter) {
     const drawPosition = Sprites.newComponent_drawPosition({
         drawCenter: drawCenter,
     });
+    const collisionRectangle = Physics.newCollisionRectangle({
+        size: {
+            x: 6,
+            y: 2,
+        },
+        positionRelativeToAnchor: {
+            x: 0,
+            y: 0,
+        },
+    });
     return engine.spawn()
         .addComponent(newTagPlayer())
         .addComponent(Physics.newComponent_worldPosition(tileCenter))
@@ -67,6 +77,7 @@ async function spawnNewPlayer(engine, pixelCanvas, tileCenter) {
         }))
         .addComponent(Actions.newComponent_Facing())
         .addComponent(drawPosition)
+        .addComponent(collisionRectangle)
         .addComponent(animatedSprite)
         .addComponent(spriteImage);
 }
@@ -77,7 +88,7 @@ const System_spawnPlayer = {
     promiseRun: async function spawnPlayer(queryResults) {
         const engine = queryResults.engine;
         const pixelCanvas = queryResults.resources.pixelCanvas;
-        await spawnNewPlayer(engine, pixelCanvas, {x: 20, y: 20});
+        await spawnNewPlayer(engine, pixelCanvas, { x: 20, y: 20 });
     },
 };
 

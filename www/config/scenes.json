@@ -141,12 +141,14 @@
             "frameMain": [
                 "moveCamera",
                 "moveMobiles",
+                "collideMobiles",
                 "handleInput"
             ],
             "frameEnd": [
                 "updateSpriteAnimation",
                 "clearBackground",
-                "renderSprites"
+                "renderSprites",
+                "debugCollisions"
             ]
         },
         "next": "level1"

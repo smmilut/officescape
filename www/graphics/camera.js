@@ -49,7 +49,7 @@ const Resource_Camera = (function build_Camera() {
     const obj_Camera = {
         name: "camera",
     };
-    let Camera_canvas, Camera_context, Camera_initOptions;
+    let Camera_initOptions;
     let Camera_gameCenter;
     let Camera_target, Camera_animationSmoothness;
 
@@ -70,11 +70,11 @@ const Resource_Camera = (function build_Camera() {
             obj_Camera.gameWidth = (1.0 * obj_Camera.screenWidth) / obj_Camera.scale;
             obj_Camera.gameHeight = (1.0 * obj_Camera.screenHeight) / obj_Camera.scale;
             
-            [Camera_canvas, Camera_context] = pixelCanvas.new(obj_Camera.screenWidth, obj_Camera.screenHeight);
+            [obj_Camera.canvas, obj_Camera.context] = pixelCanvas.new(obj_Camera.screenWidth, obj_Camera.screenHeight);
             let parentId = Camera_initOptions.parentId || "game";
             const elParent = document.getElementById(parentId);
             elParent.innerHTML = "";
-            elParent.appendChild(Camera_canvas);
+            elParent.appendChild(obj_Camera.canvas);
 
             obj_Camera.deadzoneSize = Camera_initOptions.deadzoneSize;
             Camera_gameCenter = Camera_initOptions.gameCenter || { x: obj_Camera.gameWidth / 2, y: obj_Camera.gameHeight / 2 };
@@ -88,16 +88,16 @@ const Resource_Camera = (function build_Camera() {
     * Clear screen for drawing next
     */
     obj_Camera.clear = function Camera_clear() {
-        Camera_context.fillStyle = obj_Camera.backgroundColor;
-        Camera_context.fillRect(0, 0, Camera_canvas.width, Camera_canvas.height);
+        obj_Camera.context.fillStyle = obj_Camera.backgroundColor;
+        obj_Camera.context.fillRect(0, 0, obj_Camera.canvas.width, obj_Camera.canvas.height);
     };
 
     /**
     * Render all this sprite now
     */
     obj_Camera.render = function Camera_render(spriteImage, gamePosition) {
-        let cameraPosition = gameToCameraPosition(gamePosition);
-        Camera_context.drawImage(spriteImage, cameraPosition.x, cameraPosition.y);
+        let cameraPosition = obj_Camera.gameToCameraPosition(gamePosition);
+        obj_Camera.context.drawImage(spriteImage, cameraPosition.x, cameraPosition.y);
     };
 
     obj_Camera.setTarget = function Camera_setTarget(gamePosition) {
@@ -167,7 +167,7 @@ const Resource_Camera = (function build_Camera() {
     *   Convert from pixels in the world coordinates `gamePosition` to pixels in the camera coordinates.
     *   Dealing with unscaled pixels (original pixel art pixels).
     */
-    function gameToCameraPosition(gamePosition) {
+     obj_Camera.gameToCameraPosition = function Camera_gameToCameraPosition(gamePosition) {
         let cameraTopLeftX = Camera_gameCenter.x - obj_Camera.gameWidth / 2.0;
         let cameraTopLeftY = Camera_gameCenter.y - obj_Camera.gameHeight / 2.0;
         /// Use Z position to calculate parallax
