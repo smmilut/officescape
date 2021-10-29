@@ -7,6 +7,7 @@ export const TILE_TYPE = Object.freeze({
     WALL: "wall",
     EDGEWALL: "edgeWall",
     EDGE: "edge",
+    DESK: "desk",
 });
 
 /*
@@ -19,6 +20,7 @@ export const MANUAL_TILE_CODE = new Map([
     [0, TILE_TYPE.NONE],
     [1, TILE_TYPE.WALL],
     [2, TILE_TYPE.EDGEWALL],
+    [3, TILE_TYPE.DESK],
 ]);
 
 /** Holds the level data (position of walls, etc) */

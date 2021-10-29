@@ -47,10 +47,10 @@
                 "wall"
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -102,7 +102,7 @@
                 "wall"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -151,10 +151,10 @@
                 "wall"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -190,13 +190,13 @@
                 "wall"
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -248,7 +248,7 @@
                 "wall"
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -352,7 +352,7 @@
                 "wall"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -391,10 +391,10 @@
                 "wall"
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -443,10 +443,10 @@
                 "wall"
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -498,7 +498,7 @@
                 "wall"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -547,10 +547,10 @@
                 "wall"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -583,16 +583,16 @@
                 2
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "topCenter": [
                 "wall"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -625,13 +625,13 @@
                 3
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
                 "wall"
@@ -670,10 +670,10 @@
                 "wall"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
                 "wall"
@@ -712,13 +712,13 @@
                 "wall"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -751,16 +751,16 @@
                 3
             ],
             "midLeft": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "topCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "botCenter": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ],
             "midRight": [
-                "none", "edgeWall", "edge"
+                "none", "edgeWall", "edge", "desk"
             ]
         },
         {
@@ -1125,6 +1125,678 @@
             ],
             "botCenter": [
                 "edge"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 4,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 10
+                    }
+                }
+            ],
+            "cellPosition": [
+                4,
+                0
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 16,
+                        "y": 10
+                    }
+                }
+            ],
+            "cellPosition": [
+                5,
+                0
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 10
+                    }
+                }
+            ],
+            "cellPosition": [
+                6,
+                0
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 3,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 10,
+                        "y": 10
+                    }
+                }
+            ],
+            "cellPosition": [
+                7,
+                0
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 4,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 16
+                    }
+                }
+            ],
+            "cellPosition": [
+                4,
+                1
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 16,
+                        "y": 16
+                    }
+                }
+            ],
+            "cellPosition": [
+                5,
+                1
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 24
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 16
+                    }
+                }
+            ],
+            "cellPosition": [
+                6,
+                1
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 3,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 10,
+                        "y": 16
+                    }
+                }
+            ],
+            "cellPosition": [
+                7,
+                1
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "desk"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 4,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 12
+                    }
+                }
+            ],
+            "cellPosition": [
+                4,
+                2
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 16,
+                        "y": 12
+                    }
+                }
+            ],
+            "cellPosition": [
+                5,
+                2
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 12
+                    }
+                }
+            ],
+            "cellPosition": [
+                6,
+                2
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 3,
+                        "y": 16
+                    },
+                    "size": {
+                        "x": 10,
+                        "y": 12
+                    }
+                }
+            ],
+            "cellPosition": [
+                7,
+                2
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "desk"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 4,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 6
+                    }
+                }
+            ],
+            "cellPosition": [
+                4,
+                3
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 16,
+                        "y": 6
+                    }
+                }
+            ],
+            "cellPosition": [
+                5,
+                3
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "desk"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 0,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 12,
+                        "y": 6
+                    }
+                }
+            ],
+            "cellPosition": [
+                6,
+                3
+            ],
+            "midLeft": [
+                "desk"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
+            ]
+        },
+        {
+            "theme": "office",
+            "type": "desk",
+            "cellWidth": 16,
+            "cellHeight": 32,
+            "drawCenter": {
+                "x": 8,
+                "y": 28
+            },
+            "tileCenter":{
+                "x": 8,
+                "y": 24
+            },
+            "collisionRectangles": [
+                {
+                    "topLeftRelativePosition": {
+                        "x": 3,
+                        "y": 22
+                    },
+                    "size": {
+                        "x": 10,
+                        "y": 6
+                    }
+                }
+            ],
+            "cellPosition": [
+                7,
+                3
+            ],
+            "midLeft": [
+                "none", "wall", "edgeWall"
+            ],
+            "midRight": [
+                "none", "wall", "edgeWall"
+            ],
+            "topCenter": [
+                "none", "wall", "edgeWall"
+            ],
+            "botCenter": [
+                "none", "wall", "edgeWall"
             ]
         }
     ]
