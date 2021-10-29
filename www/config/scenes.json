@@ -147,8 +147,7 @@
             "frameEnd": [
                 "updateSpriteAnimation",
                 "clearBackground",
-                "renderSprites",
-                "debugCollisions"
+                "renderSprites"
             ]
         },
         "next": "level1"

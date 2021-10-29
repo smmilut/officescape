@@ -108,7 +108,7 @@ const Component_CollisionRectangle = {
      *  `pushback` a vector of the minimum displacement to push the other rectangle out of this rectangle
      */
     collideRectangle: function CollisionRectangle_collideRectangle(otherCollider) {
-        return this._collide(otherCollider.left, otherCollider.right, otherCollider.top, otherCollider.bottom);
+        return this._collide(otherCollider.left, otherCollider.right, otherCollider.bottom, otherCollider.top);
     },
     /**
      * Calculate collision between a point and this rectangle
@@ -286,7 +286,6 @@ const System_collideMobiles = {
                 //console.log("wall rectangles :", obstacle.collisionRectangles, obstacle.worldPosition);
                 const collision = obstacle.collisionRectangles.collide(mobile.collisionRectangle);
                 if (collision.hasCollision) {
-                    console.log("COLLISION");
                     mobile.worldPosition.x += collision.pushback.x;
                     mobile.worldPosition.y += collision.pushback.y;
                 }
