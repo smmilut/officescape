@@ -1,5 +1,6 @@
 import * as Rng from "./rng.js";
 import * as SquirrelNoise from "./squirrelNoise5.js";
+import * as Perlin from "./perlin.js";
 /**
  * Random utilities
  * @module random
@@ -63,7 +64,7 @@ const Resource_Rngg = {
         if (options.seed === undefined) {
             options.seed = this.seedGenerator.roll();
         }
-        return Rng.newRng(options);
+        return Perlin.newPerlin2D(options);
     },
 };
 

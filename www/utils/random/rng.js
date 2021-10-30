@@ -14,7 +14,7 @@ const Rng = {
      */
     init: function Rng_init(initOptions) {
         initOptions = initOptions || {};
-        this.noiseFn = SquirrelNoise.get1dNoiseZeroToOne;
+        this.noiseFn = initOptions.noiseFn || SquirrelNoise.get1dNoiseZeroToOne;
         this.seed = initOptions.seed || 0;
         this.initialPosition = initOptions.position || 0;
         this.position = this.initialPosition;

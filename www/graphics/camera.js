@@ -108,15 +108,15 @@ const Resource_Camera = (function build_Camera() {
     /**
     *   Snap Camera to the edges of the level, so that we don't see outside the level map
     */
-    obj_Camera.snapTargetToEdges = function Camera_snapTargetToEdges(levelGrid) {
+    obj_Camera.snapTargetToEdges = function Camera_snapTargetToEdges(levelMap) {
         let targetLeftEdge = Camera_target.x - obj_Camera.gameWidth / 2.0;
         let targetRightEdge = Camera_target.x + obj_Camera.gameWidth / 2.0;
         let targetTopEdge = Camera_target.y - obj_Camera.gameHeight / 2.0;
         let targetBottomEdge = Camera_target.y + obj_Camera.gameHeight / 2.0;
         let levelLeftEdge = 0;
-        let levelRightEdge = levelGrid.width;
+        let levelRightEdge = levelMap.width;
         let levelTopEdge = 0;
-        let levelBottomEdge = levelGrid.height;
+        let levelBottomEdge = levelMap.height;
         if (targetLeftEdge < levelLeftEdge) {
             /// snap Camera LEFT
             Camera_target.x = levelLeftEdge + obj_Camera.gameWidth / 2.0;

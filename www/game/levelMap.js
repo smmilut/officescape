@@ -1,4 +1,4 @@
-import * as HttpUtils from "../utils/httpUtils.js";
+import * as Interpolation from "../utils/interpolation.js";
 
 /// TODO : create separate notion for map cell type (block, sky, etc) and things like items or spawn points that are also located on those map cells
 /** Enum of map tile types */
@@ -29,21 +29,53 @@ const Resource_levelMap = {
     TILE_TYPE: TILE_TYPE,
     prepareInit: function levelMap_prepareInit(initOptions) {
         this.initOptions = initOptions || {};
+        this.initQueryResources = this.initOptions.initQueryResources;
     },
-    init: async function levelMap_init() {
+    init: async function levelMap_init(queryResults) {
+        const rngg = queryResults.resources.rngg;
+        this.perlin = rngg.newPerlin2D();
         this.tileWidth = this.initOptions.tileWidth;
         this.tileHeight = this.initOptions.tileHeight;
-        const data = await HttpUtils.request({
-            url: this.initOptions.url,
-        });
-        let json_obj = JSON.parse(data.responseText);
-        this.gridHeight = json_obj.map.length;
-        this.gridWidth = json_obj.map[0].length;
+        this.gridHeight = 20;
+        this.gridWidth = 30;
         this.height = this.gridHeight * this.tileHeight;
         this.width = this.gridWidth * this.tileWidth;
-        /// TODO : replace when doing map procedural generation
-        /// convert manually generated map (with number codes) to actual TILE_TYPE
-        this.data = json_obj.map.map(function getTileCodesOfRow(row) {
+        this.generateMap();
+    },
+    generateMap: function levelMap_generateMap() {
+        let data = [];
+        for (let rowIndex = 0; rowIndex < this.gridHeight; rowIndex++) {
+            let row = [];
+            for (let columnIndex = 0; columnIndex < this.gridWidth; columnIndex++) {
+                let intValue = 0;
+                if (rowIndex == 0 ||
+                    rowIndex == this.gridHeight - 1 ||
+                    columnIndex == 0 ||
+                    columnIndex == this.gridWidth - 1
+                ) {
+                    intValue = 2;
+                } else {
+                    const noiseValue = this.perlin.getValueScaledAt({
+                        x: columnIndex,
+                        y: rowIndex,
+                    },
+                        {
+                            x: 5.0,
+                            y: 5.0,
+                        });
+                    const scaledValue = Interpolation.lerp(0, 10, noiseValue, -1, 1);
+                    if (scaledValue < 4) {
+                        intValue = 3;
+                    } else if (scaledValue < 5) {
+                        intValue = 1;
+                    }
+                }
+                row.push(intValue);
+            }
+            data.push(row);
+        }
+        console.log(data);
+        this.data = data.map(function getTileCodesOfRow(row) {
             return row.map(function getTileCode(cellCode) {
                 return MANUAL_TILE_CODE.get(cellCode);
             });

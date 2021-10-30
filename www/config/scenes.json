@@ -6,10 +6,7 @@
                 "name": "time"
             },
             {
-                "name": "rngg",
-                "initOptions": {
-                    "seed": 0
-                }
+                "name": "rngg"
             },
             {
                 "name": "pixelCanvas",
@@ -117,7 +114,9 @@
             {
                 "name": "levelMap",
                 "initOptions": {
-                    "url": "www/levelmap1.json",
+                    "initQueryResources": [
+                        "rngg"
+                    ],
                     "tileWidth": 16,
                     "tileHeight": 16
                 }

@@ -119,7 +119,7 @@ function getBestSheetCell(sheetLayout, neighbors) {
      */
     let bestSheetCells;
     /** The score of the best sheet cell */
-    let bestSheetCellScore = -1;
+    let bestSheetCellScore = -10;
     for (const sheetCellInfo of sheetLayout) {
         if (sheetCellInfo.type != neighbors.centerCell) {
             /// the sheet cell is the wrong type of block

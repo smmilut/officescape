@@ -8,8 +8,8 @@
  * @param {number} value0 value at point "0" where transition begins and `t == edge0`
  * @param {number} value1 value at point "1" where transition ends and `t == edge1`
  * @param {number} t relative position inside the transition, between point "0" and point "1" expressed as number inside [edge0, edge1] interval
- * @param {number} edge0 parameter value when the transition begins, and where `result == value0`
- * @param {number} edge1 parameter value when the transition ends, and where `result == value1`
+ * @param {number} edge0 (optional, default 0.0) parameter value when the transition begins, and where `result == value0`
+ * @param {number} edge1 (optional, default 1.0) parameter value when the transition ends, and where `result == value1`
  * @returns {number} interpolated value in the interval
  */
 export function lerp(value0, value1, t, edge0, edge1) {
@@ -29,8 +29,8 @@ export function lerp(value0, value1, t, edge0, edge1) {
  * @param {number} value0 value at point "0" where transition begins and `t == edge0`
  * @param {number} value1 value at point "1" where transition ends and `t == edge1`
  * @param {number} t relative position inside the transition, between point "0" and point "1" expressed as number inside [edge0, edge1] interval
- * @param {number} edge0 parameter value when the transition begins, and where `result == value0`
- * @param {number} edge1 parameter value when the transition ends, and where `result == value1`
+ * @param {number} edge0 (optional, default 0.0) parameter value when the transition begins, and where `result == value0`
+ * @param {number} edge1 (optional, default 1.0) parameter value when the transition ends, and where `result == value1`
  * @returns {number} interpolated value in the interval
  */
 export function smoothstep(value0, value1, t, edge0, edge1) {
@@ -51,8 +51,8 @@ export function smoothstep(value0, value1, t, edge0, edge1) {
  * @param {number} value0 value at point "0" where transition begins and `t == edge0`
  * @param {number} value1 value at point "1" where transition ends and `t == edge1`
  * @param {number} t relative position inside the transition, between point "0" and point "1" expressed as number inside [edge0, edge1] interval
- * @param {number} edge0 parameter value when the transition begins, and where `result == value0`
- * @param {number} edge1 parameter value when the transition ends, and where `result == value1`
+ * @param {number} edge0 (optional, default 0.0) parameter value when the transition begins, and where `result == value0`
+ * @param {number} edge1 (optional, default 1.0) parameter value when the transition ends, and where `result == value1`
  * @returns {number} interpolated value in the interval
  */
 export function smootherstep(value0, value1, t, edge0, edge1) {

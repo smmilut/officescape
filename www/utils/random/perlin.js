@@ -22,7 +22,7 @@ const Perlin2D = {
     init: function Perlin2D_init(initOptions) {
         initOptions = initOptions || {};
         this.interpolate = initOptions.interpolate || Interpolation.smootherstep;
-        this.random2dNoise = initOptions.random2dNoise || SquirrelNoise.get1dNoiseZeroToOne;
+        this.random2dNoise = initOptions.random2dNoise || SquirrelNoise.get2dNoiseZeroToOne;
         this.seed = initOptions.seed || 0;
     },
     /**
