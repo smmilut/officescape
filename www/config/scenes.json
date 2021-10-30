@@ -6,6 +6,12 @@
                 "name": "time"
             },
             {
+                "name": "rngg",
+                "initOptions": {
+                    "seed": 0
+                }
+            },
+            {
                 "name": "pixelCanvas",
                 "initOptions": {
                     "scale": 5.0

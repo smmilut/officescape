@@ -1,6 +1,6 @@
 /**
- * Some utilities for the Engine
- * @module engineUtils
+ * Time utilities
+ * @module time
  */
 
 /** Get the current time in seconds */

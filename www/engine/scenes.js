@@ -1,5 +1,5 @@
 import * as Engine from "./engine.js";
-import * as Utils from "../utils.js";
+import * as HttpUtils from "../utils/httpUtils.js";
 /**
     # Scene : Levels scene management
 
@@ -60,7 +60,7 @@ export const Scene = (function build_Scene() {
     let Scene_fullConfig, Scene_currentName, Scene_currentConfig, Scene_nextName;
 
     obj_Scene.init = async function Scene_init() {
-        const rawSchedulingFile = await Utils.Http.Request({
+        const rawSchedulingFile = await HttpUtils.request({
             url: "www/config/scenes.json",
         });
         Scene_fullConfig = JSON.parse(rawSchedulingFile.responseText);

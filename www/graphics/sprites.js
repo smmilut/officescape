@@ -1,4 +1,5 @@
-import * as Utils from "../utils.js";
+import * as FileUtils from "../utils/fileUtils.js";
+import * as HttpUtils from "../utils/httpUtils.js";
 /**
  * Manage image sprites
  * @module sprites
@@ -52,7 +53,7 @@ const AnimatedSprite = {
     init: async function AnimatedSprite_init(initOptions) {
         this.sheetSrc = initOptions.sheetSrc;
         this.sheetConfigUrl = initOptions.sheetConfigUrl;
-        const data = await Utils.Http.Request({
+        const data = await HttpUtils.request({
             url: initOptions.sheetConfigUrl,
         });
         this.sheetConfig = JSON.parse(data.responseText);
@@ -72,7 +73,7 @@ const AnimatedSprite = {
         *   }
         */
         this.sheetLayout = this.sheetConfig.layout;
-        this.sheetImage = await Utils.File.ImageLoader.get(this.sheetSrc);
+        this.sheetImage = await FileUtils.ImageLoader.get(this.sheetSrc);
         await this._parseSpriteSheet(initOptions.pixelCanvas);
         this.setPose({ name: this.sheetConfig.defaultPose });
     },

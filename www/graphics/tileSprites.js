@@ -1,4 +1,5 @@
-import * as Utils from "../utils.js";
+import * as FileUtils from "../utils/fileUtils.js";
+import * as HttpUtils from "../utils/httpUtils.js";
 import * as Sprites from "./sprites.js";
 import * as Physics from "../game/physics.js";
 
@@ -9,11 +10,11 @@ const Resource_terrainSheet = {
         this.initOptions = initOptions || {};
     },
     init: async function terrainSheet_init() {
-        const data = await Utils.Http.Request({
+        const data = await HttpUtils.request({
             url: this.initOptions.sheetConfigUrl,
         });
         this.sheetConfig = JSON.parse(data.responseText);
-        this.sheetImage = await Utils.File.ImageLoader.get(this.initOptions.sheetSrc);
+        this.sheetImage = await FileUtils.ImageLoader.get(this.initOptions.sheetSrc);
     },
 };
 

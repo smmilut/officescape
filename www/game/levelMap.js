@@ -1,4 +1,4 @@
-import * as Utils from "../utils.js";
+import * as HttpUtils from "../utils/httpUtils.js";
 
 /// TODO : create separate notion for map cell type (block, sky, etc) and things like items or spawn points that are also located on those map cells
 /** Enum of map tile types */
@@ -33,7 +33,7 @@ const Resource_levelMap = {
     init: async function levelMap_init() {
         this.tileWidth = this.initOptions.tileWidth;
         this.tileHeight = this.initOptions.tileHeight;
-        const data = await Utils.Http.Request({
+        const data = await HttpUtils.request({
             url: this.initOptions.url,
         });
         let json_obj = JSON.parse(data.responseText);
