@@ -126,7 +126,24 @@
                         "rngg"
                     ],
                     "tileWidth": 16,
-                    "tileHeight": 16
+                    "tileHeight": 16,
+                    "gridHeight": 20,
+                    "gridWidth": 30,
+                    "mapGeneration": {
+                        "scaleX": 5.0,
+                        "scaleY": 5.0,
+                        "amplitude": 10,
+                        "thresholds": [
+                            {
+                                "noiseValue": 4,
+                                "cellType": "desk"
+                            },
+                            {
+                                "noiseValue": 5,
+                                "cellType": "wall"
+                            }
+                        ]
+                    }
                 }
             },
             {

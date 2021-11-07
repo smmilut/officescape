@@ -10,19 +10,6 @@ export const TILE_TYPE = Object.freeze({
     DESK: "desk",
 });
 
-/*
-*   TODO : replace this code by the TILE_TYPE
-    I Keep it for now, because It's easier to manually write maps in a text file with single numbers.
-    But TODO replace this when we do procedural generation of maps (then we no longer care to have maps easy to edit as text)
-*/
-/** Conversion from tile code number to tile type */
-export const MANUAL_TILE_CODE = new Map([
-    [0, TILE_TYPE.NONE],
-    [1, TILE_TYPE.WALL],
-    [2, TILE_TYPE.EDGEWALL],
-    [3, TILE_TYPE.DESK],
-]);
-
 /** Holds the level data (position of walls, etc) */
 const Resource_levelMap = {
     name: "levelMap",
@@ -36,50 +23,58 @@ const Resource_levelMap = {
         this.perlin = rngg.newPerlin2D();
         this.tileWidth = this.initOptions.tileWidth;
         this.tileHeight = this.initOptions.tileHeight;
-        this.gridHeight = 20;
-        this.gridWidth = 30;
+        this.gridHeight = this.initOptions.gridHeight;
+        this.gridWidth = this.initOptions.gridWidth;
         this.height = this.gridHeight * this.tileHeight;
         this.width = this.gridWidth * this.tileWidth;
+        this.mapGenerationOptions = this.initOptions.mapGeneration;
         this.generateMap();
     },
     generateMap: function levelMap_generateMap() {
+        const scaleX = this.mapGenerationOptions.scaleX;
+        const scaleY = this.mapGenerationOptions.scaleY;
+        const amplitude = this.mapGenerationOptions.amplitude;
+        const thresholds = this.mapGenerationOptions.thresholds;
+        /// sort thresholds by increasing "noiseValue"
+        thresholds.sort(function compareThresholds(t1, t2) {
+            return t1.noiseValue - t2.noiseValue;
+        })
         let data = [];
         for (let rowIndex = 0; rowIndex < this.gridHeight; rowIndex++) {
             let row = [];
             for (let columnIndex = 0; columnIndex < this.gridWidth; columnIndex++) {
-                let intValue = 0;
+                let cellType = TILE_TYPE.NONE;
                 if (rowIndex == 0 ||
                     rowIndex == this.gridHeight - 1 ||
                     columnIndex == 0 ||
                     columnIndex == this.gridWidth - 1
                 ) {
-                    intValue = 2;
+                    /// external edge
+                    cellType = TILE_TYPE.EDGEWALL;
                 } else {
+                    /// calculate noise
                     const noiseValue = this.perlin.getValueScaledAt({
                         x: columnIndex,
                         y: rowIndex,
                     },
                         {
-                            x: 5.0,
-                            y: 5.0,
+                            x: scaleX,
+                            y: scaleY,
                         });
-                    const scaledValue = Interpolation.lerp(0, 10, noiseValue, -1, 1);
-                    if (scaledValue < 4) {
-                        intValue = 3;
-                    } else if (scaledValue < 5) {
-                        intValue = 1;
+                    /// scale noise amplitude (for easier configuration of thresholds)
+                    const scaledValue = Interpolation.lerp(0, amplitude, noiseValue, -1, 1);
+                    for (const threshold of thresholds) {
+                        if (scaledValue < threshold.noiseValue) {
+                            cellType = threshold.cellType;
+                            break;
+                        }
                     }
                 }
-                row.push(intValue);
+                row.push(cellType);
             }
             data.push(row);
         }
-        console.log(data);
-        this.data = data.map(function getTileCodesOfRow(row) {
-            return row.map(function getTileCode(cellCode) {
-                return MANUAL_TILE_CODE.get(cellCode);
-            });
-        });
+        this.data = data;
     },
 };
 
