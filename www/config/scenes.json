@@ -3,10 +3,18 @@
     "_global": {
         "resources": [
             {
+                "name": "browserInfo"
+            },
+            {
                 "name": "time"
             },
             {
-                "name": "rngg"
+                "name": "rngg",
+                "initOptions": {
+                    "initQueryResources": [
+                        "browserInfo"
+                    ]
+                }
             },
             {
                 "name": "pixelCanvas",

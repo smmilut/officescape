@@ -1,3 +1,4 @@
+import * as Browser from "./browser.js";
 import * as Time from "./time.js";
 import * as Random from "./random/random.js";
 /**
@@ -12,6 +13,7 @@ import * as Random from "./random/random.js";
  * Call this first.
  */
  function initSubModules(engine) {
+    Browser.init(engine);
     Time.init(engine);
     Random.init(engine);
 }

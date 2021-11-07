@@ -20,12 +20,20 @@ const Resource_Rngg = {
      */
     prepareInit: function Time_prepareInit(initOptions) {
         this.initOptions = initOptions || {};
+        this.initQueryResources = initOptions.initQueryResources;
     },
-    init: function Rngg_init() {
-        if (this.initOptions.seed === undefined) {
-            this.seed = Rng.newSeedUndeterminist();
-        } else {
+    init: function Rngg_init(queryResults) {
+        const browserInfo = queryResults.resources.browserInfo;
+        const urlSeed = browserInfo.urlParameters.get("seed");
+        if (urlSeed) {
+            console.log("seeding RNG from URL parameter");
+            this.seed = Number(urlSeed);
+        } else if (this.initOptions.seed !== undefined) {
+            console.log("seeding RNG from scene options");
             this.seed = this.initOptions.seed;
+        } else {
+            console.log("seeding RNG from undeterministic timing");
+            this.seed = Rng.newSeedUndeterminist();
         }
         console.log("RNGG seed", this.seed);
         this.seedGenerator = Rng.newRng({
