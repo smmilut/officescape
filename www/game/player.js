@@ -1,13 +1,12 @@
 import * as Physics from "./physics.js";
 import * as Actions from "./actions.js";
-import * as Sprites from "../graphics/sprites.js";
 /**
  * Manage player
  * @module player
  */
 
 /** Component to tag if an Entity is a (the) player */
-const newTagPlayer = function newTagPlayer(_initOptions) {
+function newComponent_TagPlayer(_initOptions) {
     return {
         name: "tagPlayer",
     };
@@ -62,7 +61,7 @@ async function spawnNewPlayer(engine, spriteServer, tileCenter) {
         },
     });
     return engine.spawn()
-        .addComponent(newTagPlayer())
+        .addComponent(newComponent_TagPlayer())
         .addComponent(Physics.newComponent_worldPosition(tileCenter))
         .addComponent(Physics.newComponent_Speed({
             increment: 10.0,

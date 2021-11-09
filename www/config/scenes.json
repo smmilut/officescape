@@ -178,7 +178,8 @@
         "systems": {
             "init": [
                 "spawnTiles",
-                "spawnPlayer"
+                "spawnPlayer",
+                "spawnMobs"
             ],
             "frameMain": [
                 "moveCamera",
