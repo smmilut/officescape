@@ -149,8 +149,8 @@
             {
                 "name": "terrainSheet",
                 "initOptions": {
-                    "sheetConfigUrl": "assets/office_terrain_tilemap.json",
-                    "sheetSrc": "assets/office_terrain_tilemap.png",
+                    "sheetConfigUrl": "assets/office.tilemap.json",
+                    "sheetSrc": "assets/office.tilemap.png",
                     "tileWidth": 16,
                     "tileHeight": 16
                 }

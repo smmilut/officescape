@@ -41,9 +41,9 @@
                 "y": 14
             },
             "pose": {
-                "name": "TalkRight",
+                "name": "StandRight",
                 "facing": "Right",
-                "action": "*unused*"
+                "action": "Stand"
             },
             "animation": {
                 "length": 2,
@@ -57,9 +57,9 @@
                 "y": 14
             },
             "pose": {
-                "name": "TalkLeft",
+                "name": "StandLeft",
                 "facing": "Left",
-                "action": "*unused*"
+                "action": "Stand"
             },
             "animation": {
                 "length": 2,

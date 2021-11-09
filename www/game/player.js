@@ -49,8 +49,8 @@ const System_handleInput = {
 
 async function spawnNewPlayer(engine, pixelCanvas, tileCenter) {
     const animatedSprite = await Sprites.newComponent_AnimatedSprite({
-        sheetSrc: "assets/devil_sheet.png",
-        sheetConfigUrl: "assets/devil_sheet.json",
+        sheetSrc: "assets/rockerGuitar.spriteSheet.png",
+        sheetConfigUrl: "assets/rockerGuitar.spriteSheet.json",
         pixelCanvas: pixelCanvas,
     });
     const spriteImage = animatedSprite.getComponent_spriteImage();

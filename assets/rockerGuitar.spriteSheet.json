@@ -1,0 +1,71 @@
+{
+    "cellWidth": 16,
+    "cellHeight": 16,
+    "defaultPose": "StandLeft",
+    "layout": [
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "StandRight",
+                "facing": "Right",
+                "action": "Stand"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forward",
+                "frameDuration": 0.200
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "WalkRight",
+                "facing": "Right",
+                "action": "Walk"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forward",
+                "frameDuration": 0.200
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "StandLeft",
+                "facing": "Left",
+                "action": "Stand"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forward",
+                "frameDuration": 0.200
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "WalkLeft",
+                "facing": "Left",
+                "action": "Walk"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forward",
+                "frameDuration": 0.200
+            }
+        }
+    ]
+}
