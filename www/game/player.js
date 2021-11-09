@@ -47,12 +47,8 @@ const System_handleInput = {
     },
 };
 
-async function spawnNewPlayer(engine, pixelCanvas, tileCenter) {
-    const animatedSprite = await Sprites.newComponent_AnimatedSprite({
-        sheetSrc: "assets/rockerGuitar.spriteSheet.png",
-        sheetConfigUrl: "assets/rockerGuitar.spriteSheet.json",
-        pixelCanvas: pixelCanvas,
-    });
+async function spawnNewPlayer(engine, spriteServer, tileCenter) {
+    const animatedSprite = spriteServer.getNew("rockerGuitar");
     const spriteImage = animatedSprite.getComponent_spriteImage();
     const drawPosition = animatedSprite.getComponent_drawPosition();
     const collisionRectangle = Physics.newCollisionRectangle({
@@ -80,11 +76,11 @@ async function spawnNewPlayer(engine, pixelCanvas, tileCenter) {
 
 const System_spawnPlayer = {
     name: "spawnPlayer",
-    resourceQuery: ["pixelCanvas"],
+    resourceQuery: ["spriteServer"],
     promiseRun: async function spawnPlayer(queryResults) {
         const engine = queryResults.engine;
-        const pixelCanvas = queryResults.resources.pixelCanvas;
-        await spawnNewPlayer(engine, pixelCanvas, { x: 20, y: 20 });
+        const spriteServer = queryResults.resources.spriteServer;
+        await spawnNewPlayer(engine, spriteServer, { x: 20, y: 20 });
     },
 };
 

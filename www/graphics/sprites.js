@@ -45,13 +45,53 @@ export const ANIMATION_TYPE = Object.freeze({
     PINGPONG: "pingpong",  // animation happens in ping-pong mode, alternating forward and backward
 });
 
+/**
+ * Resource that provides instances of Sprites
+ */
+const Resource_SpriteServer = {
+    name: "spriteServer",
+    prepareInit: function spriteServer_prepareInit(initOptions) {
+        this.initOptions = initOptions || {};
+        this.initQueryResources = this.initOptions.initQueryResources;
+    },
+    init: async function spriteServer_init(queryResults) {
+        const pixelCanvas = queryResults.resources.pixelCanvas;
+        const spriteNames = this.initOptions.sprites;
+        this.spriteSheets = new Map();
+        for (const spriteName of spriteNames) {
+            const spriteSheet = Object.create(AnimatedSpriteSheet);
+            await spriteSheet.initSheet({
+                sheetSrc: "assets/" + spriteName + ".spriteSheet.png",
+                sheetConfigUrl: "assets/" + spriteName + ".spriteSheet.json",
+                pixelCanvas: pixelCanvas,
+            });
+            this.spriteSheets.set(spriteName, spriteSheet);
+        }
+    },
+    /**
+     * Spawn a new Component "animatedSprite" based on the requested template
+     * @param {string} spriteName standard name of sprite
+     * @returns Component of AnimatedSprite
+     */
+    getNew: function spriteServer_getNew(spriteName) {
+        const spriteTemplate = this.spriteSheets.get(spriteName);
+        const animatedSprite = Object.create(spriteTemplate);
+        Object.assign(animatedSprite, AnimatedSprite);
+        animatedSprite.initAnimation();
+        return animatedSprite;
+    },
+};
 
 /**
-* a Sprite with animation from a sprite sheet
-*/
-const AnimatedSprite = {
-    name: "animatedSprite",
-    init: async function AnimatedSprite_init(initOptions) {
+ * Template of an animated sprite sheet
+ */
+const AnimatedSpriteSheet = {
+    /**
+     * Initialize the sheet from the png image and the json configuration.
+     * This creates a layout of frames and images which are cut out of the sprite sheet.
+     * @param {object} initOptions 
+     */
+    initSheet: async function AnimatedSpriteSheet_initSheet(initOptions) {
         this.sheetSrc = initOptions.sheetSrc;
         this.sheetConfigUrl = initOptions.sheetConfigUrl;
         const data = await HttpUtils.request({
@@ -76,9 +116,12 @@ const AnimatedSprite = {
         this.sheetLayout = this.sheetConfig.layout;
         this.sheetImage = await FileUtils.ImageLoader.get(this.sheetSrc);
         await this._parseSpriteSheet(initOptions.pixelCanvas);
-        this.setPose({ name: this.sheetConfig.defaultPose });
     },
-    _parseSpriteSheet: async function AnimatedSprite_parseSpriteSheet(pixelCanvas) {
+    /**
+     * Cut the sprite sheet into separate images and populate the layout storage
+     * @param {object} pixelCanvas the pixelCanvas Resource, to allow image copy
+     */
+    _parseSpriteSheet: async function AnimatedSpriteSheet_parseSpriteSheet(pixelCanvas) {
         // Run through all cells in the sprite sheet to define separate animation frames
         let framePromises = [];
         for (let sourceY = 0, poseIndex = 0; sourceY < this.sheetImage.height; sourceY += this.sheetCellHeight, poseIndex++) {
@@ -103,7 +146,16 @@ const AnimatedSprite = {
         }
         await Promise.all(framePromises);
     },
-    _configureFrame: function AnimatedSprite_configureFrame(frameIndex, poseName, pixelCanvas, sourceX, sourceY) {
+    /**
+     * Extracts the frame image into a separate copy and configure it in the layout storage
+     * @param {integer} frameIndex 
+     * @param {string} poseName 
+     * @param {object} pixelCanvas the pixelCanvas Resource, to allow image copy
+     * @param {integer} sourceX 
+     * @param {integer} sourceY 
+     * @returns Promise of a ocmpleted image copy
+     */
+    _configureFrame: function AnimatedSpriteSheet_configureFrame(frameIndex, poseName, pixelCanvas, sourceX, sourceY) {
         return new Promise(function promiseFrameImage(resolve, _reject) {
             const [canvas, context] = pixelCanvas.newUnscaled(this.sheetCellWidth, this.sheetCellHeight);
             // Draw to the hidden temporary canvas
@@ -127,6 +179,17 @@ const AnimatedSprite = {
             }.bind(this));
             frameImage.src = imageUri;
         }.bind(this));
+    },
+};
+
+/**
+ * a Sprite with animation from a sprite sheet
+ * Resquires to be composed with a SpriteSheet
+ */
+const AnimatedSprite = {
+    initAnimation: function AnimatedSprite_initAnimation() {
+        this.name = "animatedSprite";
+        this.setPose({ name: this.sheetConfig.defaultPose });
     },
     /**
      * Get current frame as an Image
@@ -161,19 +224,9 @@ const AnimatedSprite = {
         });
     },
     /**
-    * set animation pose
-    *
-    *   poseInfo = {
-    *       name,
-    *   }
-    * 
-    * or
-    * 
-    *   poseInfo = {
-    *       action,
-    *       facing,
-    *   }
-    */
+     * set animation pose
+     * @param {object} poseInfo can be { name } or { action, facing }
+     */
     setPose: function AnimatedSprite_setPose(poseInfo) {
         let poseName = poseInfo.name;
         if (poseInfo.action && poseInfo.facing) {
@@ -204,8 +257,8 @@ const AnimatedSprite = {
         }
     },
     /**
-    * update animation frame time, change frame, change animation direction if necessary
-    */
+     * update animation frame time, change frame, change animation direction if necessary
+     */
     updateAnimation: function AnimatedSprite_updateAnimation(timePassed) {
         if (this.animationDirection != ANIMATION_DIRECTION.STOPPED) {
             this.frameTime += timePassed;
@@ -216,8 +269,8 @@ const AnimatedSprite = {
         }
     },
     /**
-    * move animation to next frame, change animation direction if necessary
-    */
+     * move animation to next frame, change animation direction if necessary
+     */
     _nextFrame: function AnimatedSprite_nextFrame() {
         const animationLength = this.poseInfo.frames.length;
         this.frame += this.animationDirection;
@@ -240,12 +293,6 @@ const AnimatedSprite = {
     },
 };
 
-export async function newComponent_AnimatedSprite(initOptions) {
-    const animatedSprite = Object.create(AnimatedSprite);
-    await animatedSprite.init(initOptions);
-    return animatedSprite;
-};
-
 const System_updateSpriteAnimation = {
     name: "updateSpriteAnimation",
     resourceQuery: ["time"],
@@ -264,5 +311,6 @@ const System_updateSpriteAnimation = {
 
 /** Call when loading */
 export function init(engine) {
+    engine.registerResource(Resource_SpriteServer);
     engine.registerSystem(System_updateSpriteAnimation);
 }

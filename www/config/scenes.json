@@ -23,6 +23,18 @@
                 }
             },
             {
+                "name": "spriteServer",
+                "initOptions": {
+                    "initQueryResources": [
+                        "pixelCanvas"
+                    ],
+                    "sprites": [
+                        "bossMoustache",
+                        "rockerGuitar"
+                    ]
+                }
+            },
+            {
                 "name": "camera",
                 "initOptions": {
                     "initQueryResources": [
