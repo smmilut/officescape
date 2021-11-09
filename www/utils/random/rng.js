@@ -35,14 +35,6 @@ const Rng = {
         }
     },
     /**
-     * Get next random number :
-     *   roll for a new random number and advance to the next position
-     * @returns next random number in sequence (type depends on `this.noiseFn`)
-     */
-    roll: function Rng_roll() {
-        return this.noiseFn(this.position++, this.seed);
-    },
-    /**
      * Get the current state of the Rng
      * @returns {object} {
      *   position: current position in the noise,
@@ -57,6 +49,32 @@ const Rng = {
             noiseFn: this.noiseFn,
         };
     },
+    /**
+     * Get next random number :
+     *   roll for a new random number and advance to the next position
+     * @returns next random number in sequence (type depends on `this.noiseFn`)
+     */
+    roll: function Rng_roll() {
+        return this.noiseFn(this.position++, this.seed);
+    },
+    /**
+     * Return a random item.value from array
+     *  selected randomly but weighted according to item.weight
+     * @param {array} array [{ value, weight }, ...]
+     * @returns random item.value from the array
+     */
+    selectWeighted: function Rng_selectWeighted(array) {
+        let selectedItem;
+        let selectedScore = -1;
+        for (const item of array) {
+            let score = this.roll() * item.weight;
+            if (score > selectedScore) {
+                selectedItem = item.value;
+                selectedScore = score;
+            }
+        }
+        return selectedItem;
+    }
 };
 
 /**
@@ -77,7 +95,7 @@ export function newRng(initOptions) {
 /**
  * largest possible 32bit signed integer
  */
- const MAX_INT32 = ~(1 << 31);
+const MAX_INT32 = ~(1 << 31);
 /**
  * Get a Uint32 seed to have an unpredictable value
  */

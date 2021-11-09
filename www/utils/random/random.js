@@ -26,13 +26,13 @@ const Resource_Rngg = {
         const browserInfo = queryResults.resources.browserInfo;
         const urlSeed = browserInfo.urlParameters.get("seed");
         if (urlSeed) {
-            console.log("seeding RNG from URL parameter");
+            console.log("seeding RNGG from URL parameter");
             this.seed = Number(urlSeed);
         } else if (this.initOptions.seed !== undefined) {
-            console.log("seeding RNG from scene options");
+            console.log("seeding RNGG from scene options");
             this.seed = this.initOptions.seed;
         } else {
-            console.log("seeding RNG from undeterministic timing");
+            console.log("seeding RNGG from undeterministic timing");
             this.seed = Rng.newSeedUndeterminist();
         }
         console.log("RNGG seed", this.seed);
@@ -40,6 +40,19 @@ const Resource_Rngg = {
             seed: this.seed,
             noiseFn: SquirrelNoise.get1dNoiseUint,
         });
+        this.rngStore = new Map();
+    },
+    /**
+     * Get or instanciate the named RNG
+     * @param {string} rngName name of the requested RNG
+     * @returns the RNG
+     */
+    getRng: function Rngg_getRng(rngName) {
+        if (!this.rngStore.has(rngName)) {
+            const rng = this.newRng();
+            this.rngStore.set(rngName, rng)
+        }
+        return this.rngStore.get(rngName);
     },
     /**
      * Instantiate a new `Rng` object to generate sequential noise-based pseudo-random numbers

@@ -30,6 +30,9 @@
                     ],
                     "sprites": [
                         "bossMoustache",
+                        "bossLady",
+                        "zombieLame",
+                        "zombieHairy",
                         "rockerGuitar"
                     ]
                 }
@@ -42,7 +45,7 @@
                     ],
                     "screenWidth": 800,
                     "screenHeight": 600,
-                    "backgroundColor": "#524b24",
+                    "backgroundColor": "#959e6a",
                     "deadzoneSize": {
                         "width": 10,
                         "height": 10
@@ -185,6 +188,7 @@
                 "moveCamera",
                 "moveMobiles",
                 "collideMobiles",
+                "mobBehave",
                 "handleInput"
             ],
             "frameEnd": [
