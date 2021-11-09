@@ -53,12 +53,8 @@ async function spawnNewPlayer(engine, pixelCanvas, tileCenter) {
         sheetConfigUrl: "assets/devil_sheet.json",
         pixelCanvas: pixelCanvas,
     });
-    const frameImage = animatedSprite.getFrameImage();
-    const spriteImage = Sprites.newComponent_spriteImage(frameImage);
-    const drawCenter = animatedSprite.getDrawCenter();
-    const drawPosition = Sprites.newComponent_drawPosition({
-        drawCenter: drawCenter,
-    });
+    const spriteImage = animatedSprite.getComponent_spriteImage();
+    const drawPosition = animatedSprite.getComponent_drawPosition();
     const collisionRectangle = Physics.newCollisionRectangle({
         size: {
             x: 6,

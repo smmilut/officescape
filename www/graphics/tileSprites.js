@@ -220,7 +220,9 @@ function spawnTile(
         tileImage.addEventListener("load", function onTileImageReady() {
             /// Image has finished copying
             /// spawn the tile
-            const spriteImage = Sprites.newComponent_spriteImage(tileImage)
+            const spriteImage = Sprites.newComponent_spriteImage({
+                image: tileImage,
+            });
             const tileEntity = engine.spawn()
                 .addComponent(drawPosition)
                 .addComponent(worldPosition)

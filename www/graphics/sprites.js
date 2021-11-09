@@ -6,10 +6,11 @@ import * as HttpUtils from "../utils/httpUtils.js";
  */
 
 /** Drawable sprite Component */
-export function newComponent_spriteImage(image) {
+export function newComponent_spriteImage(initOptions) {
+    initOptions = initOptions || {};
     return {
         name: "spriteImage",
-        image: image,
+        image: initOptions.image,
     };
 }
 
@@ -127,11 +128,37 @@ const AnimatedSprite = {
             frameImage.src = imageUri;
         }.bind(this));
     },
+    /**
+     * Get current frame as an Image
+     * @returns Image
+     */
     getFrameImage: function AnimatedSprite_getFrameImage() {
         return this.frameImage;
     },
+    /**
+     * Get current frame as a "spriteImage" Component
+     * @returns "spriteImage" Component
+     */
+    getComponent_spriteImage: function AnimatedSprite_getComponent_spriteImage() {
+        return newComponent_spriteImage({
+            image: this.getFrameImage(),
+        });
+    },
+    /**
+     * Get the position of the sprite center
+     * @returns relative position of the sprite's center relative to the topleft corner of the image
+     */
     getDrawCenter: function AnimatedSprite_getDrawCenter() {
         return this.poseInfo.drawCenter;
+    },
+    /**
+     * Get the "drawPosition" Component for the current pose
+     * @returns "drawPosition" Component
+     */
+    getComponent_drawPosition: function AnimatedSprite_getComponent_drawPosition() {
+        return newComponent_drawPosition({
+            drawCenter: this.getDrawCenter(),
+        });
     },
     /**
     * set animation pose
