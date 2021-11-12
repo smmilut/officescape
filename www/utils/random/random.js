@@ -41,6 +41,7 @@ const Resource_Rngg = {
             noiseFn: SquirrelNoise.get1dNoiseUint,
         });
         this.rngStore = new Map();
+        this.perlinStore = new Map();
     },
     /**
      * Get or instanciate the named RNG
@@ -69,6 +70,23 @@ const Resource_Rngg = {
             options.seed = this.seedGenerator.roll();
         }
         return Rng.newRng(options);
+    },
+    /**
+     * Get or instanciate the named Perlin2D noise generator
+     * @param {string} perlinName name of the requested Perlin2D noise generator
+     * @param {object} options to pass to initialize or re-initialize the generator
+     * @returns the Perlin2D noise generator
+     */
+    getPerlin2D: function Rngg_getPerlin2D(perlinName, options) {
+        let perlin;
+        if (this.perlinStore.has(perlinName)) {
+            perlin = this.perlinStore.get(perlinName);
+            perlin.setOptions(options);
+        } else {
+            perlin = this.newPerlin2D(options);
+            this.perlinStore.set(perlinName, perlin)
+        }
+        return perlin;
     },
     /**
      * Instantiate a bi-dimensionnal Perlin noise generator

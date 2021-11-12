@@ -17,31 +17,79 @@ const Perlin2D = {
      *   interpolate: (optional) interpolation function,
      *   random2dNoise: (optional) random 2D noise function,
      *   seed: (optional) RNG seed,
+     *   spatialScale: (optional) { x, y } scale to resize the noise positions,
      * }
      */
     init: function Perlin2D_init(initOptions) {
-        initOptions = initOptions || {};
-        this.interpolate = initOptions.interpolate || Interpolation.smootherstep;
-        this.random2dNoise = initOptions.random2dNoise || SquirrelNoise.get2dNoiseZeroToOne;
-        this.seed = initOptions.seed || 0;
+        this.setDefaultOptions();
+        this.setOptions(initOptions);
+        /// Calculate theoritical amplitude of values
+        // confirmed experimentally
+        // and taken from https://digitalfreepen.com/2017/06/20/range-perlin-noise.html
+        let numberOfDimensions = 2;  // 2 because bi-dimensionnal
+        this.theoriticalAmplitude = Math.sqrt(numberOfDimensions / 4.0);
     },
     /**
-     * get scaled noise at requested position
-     * @param {object} position {x, y} position where to evaluate for noise
-     * @param {object} scale {x, y} scale to resize the noise
-     * @returns 
+     * Set all options to default, including seed
      */
-    getValueScaledAt: function Perlin2D_getValueScaledAt(position, scale) {
-        return this.getValueAt({
-            x: position.x * 1.0 / scale.x,
-            y: position.y * 1.0 / scale.y,
-        })
+    setDefaultOptions: function Perlin2D_setDefaultOptions() {
+        this.interpolate = Interpolation.smootherstep;
+        this.random2dNoise = SquirrelNoise.get2dNoiseZeroToOne;
+        this.seed = 0;
+        this.spatialScale = { x: 1.0, y: 1.0 };
     },
     /**
-     * get noise at requested position
+     * Set requested options to a new value
+     * @param {object} options {
+     *   interpolate: (optional) interpolation function,
+     *   random2dNoise: (optional) random 2D noise function,
+     *   seed: (optional) RNG seed,
+     *   spatialScale: (optional) { x, y } scale to resize the noise positions,
+     * }
+     */
+    setOptions: function Perlin2D_setOptions(options) {
+        if (options === undefined) {
+            return;
+        }
+        if (options.interpolate !== undefined) {
+            this.interpolate = options.interpolate;
+        }
+        if (options.random2dNoise !== undefined) {
+            this.random2dNoise = options.random2dNoise;
+        }
+        if (options.seed !== undefined) {
+            this.seed = options.seed;
+        }
+        if (options.spatialScale !== undefined) {
+            this.spatialScale = options.spatialScale;
+        }
+    },
+    /**
+     * Get noise at requested position, saturating the range [-1, 1], and scaled spatially
+     * @param {object} position {x, y} position where to evaluate for noise
+     */
+    getValueSaturatedAt: function Perlin2D_getValueSaturatedAt(position) {
+        return Interpolation.lerp(
+            -1, 1,
+            this.getValueAt(position),
+            -this.theoriticalAmplitude, this.theoriticalAmplitude
+        );
+    },
+    /**
+     * Get noise at requested position, in the range of Perlin noise, but scaled spatially
      * @param {object} position {x, y} position where to evaluate for noise
      */
     getValueAt: function Perlin2D_getValueAt(position) {
+        return this._getRawAt({
+            x: position.x * 1.0 / this.spatialScale.x,
+            y: position.y * 1.0 / this.spatialScale.y,
+        })
+    },
+    /**
+     * Get Perlin noise at requested position
+     * @param {object} position {x, y} position where to evaluate for noise
+     */
+    _getRawAt: function Perlin2D_getRawAt(position) {
         const gridSides = this._getGridSides(position);
         const interpolationWeights = this._getInterpolationWeights(position, gridSides);
 
