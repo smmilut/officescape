@@ -1,6 +1,5 @@
 import * as Interpolation from "../utils/interpolation.js";
 
-/// TODO : create separate notion for map cell type (block, sky, etc) and things like items or spawn points that are also located on those map cells
 /** Enum of map tile types */
 export const TILE_TYPE = Object.freeze({
     NONE: "none",
@@ -10,10 +9,17 @@ export const TILE_TYPE = Object.freeze({
     DESK: "desk",
 });
 
+/** Enum of map cell content types */
+export const CELL_CONTENT_TYPE = Object.freeze({
+    NONE: "none",
+    MOBSPAWNPOINT: "mobSpawnPoint",
+});
+
 /** Holds the level data (position of walls, etc) */
 const Resource_levelMap = {
     name: "levelMap",
     TILE_TYPE: TILE_TYPE,
+    CELL_CONTENT_TYPE: CELL_CONTENT_TYPE,
     prepareInit: function levelMap_prepareInit(initOptions) {
         this.initOptions = initOptions || {};
         this.initQueryResources = this.initOptions.initQueryResources;
@@ -41,6 +47,7 @@ const Resource_levelMap = {
         this.cacheMap();
     },
     cacheMap: function levelMap_cacheMap() {
+        console.log("caching map");
         let data = [];
         for (let rowIndex = 0; rowIndex < this.gridHeight; rowIndex++) {
             let row = [];
@@ -66,14 +73,16 @@ const Resource_levelMap = {
         const configurationAmplitude = this.mapGenerationOptions.amplitude;
         const perlinAmplitude = this.perlin.theoriticalAmplitude;
         const thresholds = this.mapGenerationOptions.thresholds;
-        let cellType = TILE_TYPE.NONE;
+        let cellValue = {
+            cellType: TILE_TYPE.NONE,
+        }
         if (rowIndex === 0 ||
             rowIndex === this.gridHeight - 1 ||
             columnIndex === 0 ||
             columnIndex === this.gridWidth - 1
         ) {
             /// external edge
-            cellType = TILE_TYPE.EDGEWALL;
+            cellValue.cellType = TILE_TYPE.EDGEWALL;
         } else {
             /// calculate noise
             const noiseValue = this.perlin.getValueAt({
@@ -88,14 +97,19 @@ const Resource_levelMap = {
             );
             for (const threshold of thresholds) {
                 if (scaledValue < threshold.noiseValue) {
-                    cellType = threshold.cellType;
+                    if (threshold.cellType === undefined) {
+                        cellValue.cellType = TILE_TYPE.NONE;
+                    } else {
+                        cellValue.cellType = threshold.cellType;
+                    }
+                    if (threshold.content !== undefined) {
+                        cellValue.content = threshold.content;
+                    }
                     break;
                 }
             }
         }
-        return {
-            cellType: cellType,
-        };
+        return cellValue;
     },
 };
 

@@ -150,12 +150,21 @@
                         "amplitude": 10,
                         "thresholds": [
                             {
-                                "noiseValue": 4,
+                                "noiseValue": 3.5,
                                 "cellType": "desk"
                             },
                             {
                                 "noiseValue": 5,
                                 "cellType": "wall"
+                            },
+                            {
+                                "noiseValue": 5.5,
+                                "cellType": "none",
+                                "content": [
+                                    {
+                                        "type": "mobSpawnPoint"
+                                    }
+                                ]
                             }
                         ]
                     }

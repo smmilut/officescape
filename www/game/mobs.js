@@ -95,7 +95,45 @@ const System_mobBehave = {
     },
 };
 
-async function spawnNewMob(engine, spriteServer, position, facing, state, spriteName) {
+function spawnNewMob(engine, spriteServer, mobRng, position) {
+    const state = mobRng.selectWeighted([
+        {
+            value: MOB_STATES.WALKING,
+            weight: 2,
+        },
+        {
+            value: MOB_STATES.STANDING,
+            weight: 1,
+        },
+    ]);
+    const facing = mobRng.selectWeighted([
+        {
+            value: Actions.FACING.LEFT,
+            weight: 1,
+        },
+        {
+            value: Actions.FACING.RIGHT,
+            weight: 1,
+        },
+    ]);
+    const spriteName = mobRng.selectWeighted([
+        {
+            value: "bossMoustache",
+            weight: 1,
+        },
+        {
+            value: "bossLady",
+            weight: 1,
+        },
+        {
+            value: "zombieLame",
+            weight: 1,
+        },
+        {
+            value: "zombieHairy",
+            weight: 1,
+        },
+    ]);
     const animatedSprite = spriteServer.getNew(spriteName);
     const spriteImage = animatedSprite.getComponent_spriteImage();
     const drawPosition = animatedSprite.getComponent_drawPosition();
@@ -130,57 +168,37 @@ async function spawnNewMob(engine, spriteServer, position, facing, state, sprite
 const System_spawnMobs = {
     name: "spawnMobs",
     resourceQuery: ["rngg", "spriteServer", "levelMap"],
-    promiseRun: async function spawnMobs(queryResults) {
+    run: function spawnMobs(queryResults) {
+        let debugMobCounter = 0;
+        console.log("spawning mobs");
         const engine = queryResults.engine;
         const spriteServer = queryResults.resources.spriteServer;
         const levelMap = queryResults.resources.levelMap;
+        const levelData = levelMap.data;
+        const tileWidth = levelMap.tileWidth;
+        const tileHeight = levelMap.tileHeight;
         const rngg = queryResults.resources.rngg;
         const mobRng = rngg.getRng("mobRng");
-        for (let mobIndex = 0; mobIndex < 50; mobIndex++) {
-            const state = mobRng.selectWeighted([
-                {
-                    value: MOB_STATES.WALKING,
-                    weight: 2,
-                },
-                {
-                    value: MOB_STATES.STANDING,
-                    weight: 1,
-                },
-            ]);
-            const position = {
-                x: 20 + (levelMap.width - 2*20) * mobRng.roll(),
-                y: 20 + (levelMap.height - 2*20) * mobRng.roll(),
-            };
-            const facing = mobRng.selectWeighted([
-                {
-                    value: Actions.FACING.LEFT,
-                    weight: 1,
-                },
-                {
-                    value: Actions.FACING.RIGHT,
-                    weight: 1,
-                },
-            ]);
-            const spriteName = mobRng.selectWeighted([
-                {
-                    value: "bossMoustache",
-                    weight: 1,
-                },
-                {
-                    value: "bossLady",
-                    weight: 1,
-                },
-                {
-                    value: "zombieLame",
-                    weight: 1,
-                },
-                {
-                    value: "zombieHairy",
-                    weight: 1,
-                },
-            ]);
-            await spawnNewMob(engine, spriteServer, position, facing, state, spriteName);
+        /// iterate the level map data
+        for (let rowIndex = 0, tileCenterY = Math.floor(tileHeight / 2); rowIndex < levelData.length; rowIndex++, tileCenterY += tileHeight) {
+            const row = levelData[rowIndex];
+            for (let columnIndex = 0, tileCenterX = Math.floor(tileWidth / 2); columnIndex < row.length; columnIndex++, tileCenterX += tileWidth) {
+                const cellValue = row[columnIndex];
+                if (cellValue.content !== undefined) {
+                    for (const content of cellValue.content) {
+                        if (content.type === levelMap.CELL_CONTENT_TYPE.MOBSPAWNPOINT) {
+                            const position = {
+                                x: tileCenterX,
+                                y: tileCenterY,
+                            };
+                            debugMobCounter++;
+                            spawnNewMob(engine, spriteServer, mobRng, position);
+                        }
+                    }
+                }
+            }
         }
+        console.log("finished spawning", debugMobCounter, "mobs")
     },
 };
 
