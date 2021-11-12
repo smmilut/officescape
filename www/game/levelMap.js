@@ -45,8 +45,8 @@ const Resource_levelMap = {
         for (let rowIndex = 0; rowIndex < this.gridHeight; rowIndex++) {
             let row = [];
             for (let columnIndex = 0; columnIndex < this.gridWidth; columnIndex++) {
-                const cellType = this.getMapValueAtCell(columnIndex, rowIndex);
-                row.push(cellType);
+                const cellValue = this.getMapValueAtCell(columnIndex, rowIndex);
+                row.push(cellValue);
             }
             data.push(row);
         }
@@ -67,10 +67,10 @@ const Resource_levelMap = {
         const perlinAmplitude = this.perlin.theoriticalAmplitude;
         const thresholds = this.mapGenerationOptions.thresholds;
         let cellType = TILE_TYPE.NONE;
-        if (rowIndex == 0 ||
-            rowIndex == this.gridHeight - 1 ||
-            columnIndex == 0 ||
-            columnIndex == this.gridWidth - 1
+        if (rowIndex === 0 ||
+            rowIndex === this.gridHeight - 1 ||
+            columnIndex === 0 ||
+            columnIndex === this.gridWidth - 1
         ) {
             /// external edge
             cellType = TILE_TYPE.EDGEWALL;
@@ -93,7 +93,9 @@ const Resource_levelMap = {
                 }
             }
         }
-        return cellType;
+        return {
+            cellType: cellType,
+        };
     },
 };
 

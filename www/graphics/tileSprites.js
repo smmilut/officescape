@@ -42,7 +42,7 @@ const System_spawnTiles = {
             const downRow = levelData[rowIndex + 1];
             for (let columnIndex = 0, tileCenterX = Math.floor(tileWidth / 2); columnIndex < row.length; columnIndex++, tileCenterX += tileWidth) {
                 const neighbors = getNeighbors(TILE_TYPE, row, upRow, downRow, columnIndex);
-                if (neighbors.centerCell === TILE_TYPE.NONE) {
+                if (neighbors.centerCell.cellType === TILE_TYPE.NONE) {
                     /// nothing to draw on empty tiles
                     continue;
                 }
@@ -78,34 +78,34 @@ function getNeighbors(TILE_TYPE, row, upRow, downRow, columnIndex) {
     const neighbors = {};
     if (upRow === undefined) {
         /// top edge of the map
-        neighbors.topLeft = TILE_TYPE.EDGE;
-        neighbors.topCenter = TILE_TYPE.EDGE;
-        neighbors.topRight = TILE_TYPE.EDGE;
+        neighbors.topLeft = { cellType: TILE_TYPE.EDGE, };
+        neighbors.topCenter = { cellType: TILE_TYPE.EDGE, };
+        neighbors.topRight = { cellType: TILE_TYPE.EDGE, };
     } else {
-        neighbors.topLeft = upRow[columnIndex - 1];
+        neighbors.topLeft = upRow[columnIndex - 1] || { cellType: TILE_TYPE.EDGE, };
         neighbors.topCenter = upRow[columnIndex];
-        neighbors.topRight = upRow[columnIndex + 1];
+        neighbors.topRight = upRow[columnIndex + 1] || { cellType: TILE_TYPE.EDGE, };
     }
     if (downRow === undefined) {
         /// bottom edge of the map
-        neighbors.botLeft = TILE_TYPE.EDGE;
-        neighbors.botCenter = TILE_TYPE.EDGE;
-        neighbors.botRight = TILE_TYPE.EDGE;
+        neighbors.botLeft = { cellType: TILE_TYPE.EDGE, };
+        neighbors.botCenter = { cellType: TILE_TYPE.EDGE, };
+        neighbors.botRight = { cellType: TILE_TYPE.EDGE, };
     } else {
-        neighbors.botLeft = downRow[columnIndex - 1];
+        neighbors.botLeft = downRow[columnIndex - 1] || { cellType: TILE_TYPE.EDGE, };
         neighbors.botCenter = downRow[columnIndex];
-        neighbors.botRight = downRow[columnIndex + 1];
+        neighbors.botRight = downRow[columnIndex + 1] || { cellType: TILE_TYPE.EDGE, };
     }
     /// current row
     neighbors.midLeft = row[columnIndex - 1];
     if (neighbors.midLeft === undefined) {
         /// left edge of the map
-        neighbors.midLeft = TILE_TYPE.EDGE;
+        neighbors.midLeft = { cellType: TILE_TYPE.EDGE, };
     }
     neighbors.midRight = row[columnIndex + 1];
     if (neighbors.midRight === undefined) {
         /// right edge of the map
-        neighbors.midRight = TILE_TYPE.EDGE;
+        neighbors.midRight = { cellType: TILE_TYPE.EDGE, };
     }
     /// current cell
     neighbors.centerCell = row[columnIndex];
@@ -121,7 +121,7 @@ function getBestSheetCell(sheetLayout, neighbors) {
     /** The score of the best sheet cell */
     let bestSheetCellScore = -10;
     for (const sheetCellInfo of sheetLayout) {
-        if (sheetCellInfo.type != neighbors.centerCell) {
+        if (sheetCellInfo.type != neighbors.centerCell.cellType) {
             /// the sheet cell is the wrong type of block
             /// skip it, we'll find better
             continue;
@@ -144,7 +144,7 @@ function getBestSheetCell(sheetLayout, neighbors) {
 function getScoreOfSheetcell(sheetCellInfo, neighbors) {
     let score = 0;
     for (const neighborName in neighbors) {
-        const neighborValue = neighbors[neighborName];
+        const neighborCellType = neighbors[neighborName].cellType;
         const sheetCellNeighborValues = sheetCellInfo[neighborName];
         if (sheetCellNeighborValues === undefined) {
             /// The sheet configuration doesn't specify anything for this neighbor direction.
@@ -154,11 +154,11 @@ function getScoreOfSheetcell(sheetCellInfo, neighbors) {
             continue;
         }
         /// The sheet configuration expects something specific in this direction
-        if (sheetCellNeighborValues.includes(neighborValue)) {
+        if (sheetCellNeighborValues.includes(neighborCellType)) {
             /// We have a match, we increase the score by 1 only
             score += 1;
             const numberOfAlternatives = sheetCellNeighborValues.length;
-            const priority = sheetCellNeighborValues.indexOf(neighborValue);
+            const priority = sheetCellNeighborValues.indexOf(neighborCellType);
             if (numberOfAlternatives > 1 && priority > 0) {
                 /// This is not the type of neighbor preferred by this sheet configuration.
                 /// We will decrease the score by that much, but still less than 2.
