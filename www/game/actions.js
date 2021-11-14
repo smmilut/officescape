@@ -8,6 +8,7 @@ export const ACTION_POSE = Object.freeze({
     NONE: "",
     STAND: "Stand",
     WALK: "Walk",
+    Using: "Using",
     WALKPANIC: "WalkPanic",
     PINNED: "Pinned",
     JUMP: "Jump",
@@ -16,6 +17,7 @@ export const ACTION_POSE = Object.freeze({
 
 /** Enum of facing directions */
 export const FACING = Object.freeze({
+    NONE: "",
     LEFT: "Left",
     RIGHT: "Right",
 });

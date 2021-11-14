@@ -165,6 +165,21 @@ function spawnNewMob(engine, spriteServer, mobRng, position) {
         .addComponent(spriteImage);
 }
 
+
+function spawnSpawnpoint(engine, spriteServer, position) {
+    const animatedSprite = spriteServer.getNew("waterfountain");
+    const spriteImage = animatedSprite.getComponent_spriteImage();
+    const drawPosition = animatedSprite.getComponent_drawPosition();
+    return engine.spawn()
+        .addComponent(Physics.newComponent_worldPosition({
+            x: position.x,
+            y: position.y - 8,
+        }))
+        .addComponent(drawPosition)
+        .addComponent(animatedSprite)
+        .addComponent(spriteImage);
+}
+
 const System_spawnMobs = {
     name: "spawnMobs",
     resourceQuery: ["rngg", "spriteServer", "levelMap"],
@@ -193,6 +208,7 @@ const System_spawnMobs = {
                             };
                             debugMobCounter++;
                             spawnNewMob(engine, spriteServer, mobRng, position);
+                            spawnSpawnpoint(engine, spriteServer, position);
                         }
                     }
                 }

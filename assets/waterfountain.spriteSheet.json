@@ -1,0 +1,39 @@
+{
+    "cellWidth": 16,
+    "cellHeight": 16,
+    "defaultPose": "Idle",
+    "layout": [
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 13
+            },
+            "pose": {
+                "name": "Idle",
+                "facing": "",
+                "action": "Idle"
+            },
+            "animation": {
+                "length": 1,
+                "type": "none",
+                "frameDuration": 0.400
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 13
+            },
+            "pose": {
+                "name": "Using",
+                "facing": "",
+                "action": "Using"
+            },
+            "animation": {
+                "length": 7,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        }
+    ]
+}
