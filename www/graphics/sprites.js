@@ -43,6 +43,7 @@ export const ANIMATION_TYPE = Object.freeze({
     FORWARD: "forward",  // animation happens in continuous forward order
     REVERSE: "reverse",  // animation happens in continuous reverse order
     PINGPONG: "pingpong",  // animation happens in ping-pong mode, alternating forward and backward
+    FORWARDSTOP: "forwardstop",  // animation happens in forward order once then stops
 });
 
 /**
@@ -241,6 +242,7 @@ const AnimatedSprite = {
             switch (this.poseInfo.animation.type) {
                 case ANIMATION_TYPE.FORWARD:
                 case ANIMATION_TYPE.PINGPONG:
+                case ANIMATION_TYPE.FORWARDSTOP:
                     this.frame = 0;
                     this.animationDirection = ANIMATION_DIRECTION.FORWARD;
                 case ANIMATION_TYPE.REVERSE:
@@ -276,6 +278,10 @@ const AnimatedSprite = {
         this.frame += this.animationDirection;
         if (this.frame >= animationLength || this.frame < 0) {
             switch (this.poseInfo.animation.type) {
+                case ANIMATION_TYPE.FORWARDSTOP:
+                    this.frame = 0;
+                    this.animationDirection = ANIMATION_DIRECTION.STOPPED;
+                    break;
                 case ANIMATION_TYPE.FORWARD:
                 case ANIMATION_TYPE.BACKWARD:
                     this.frame = (this.frame + animationLength) % animationLength;
@@ -290,6 +296,9 @@ const AnimatedSprite = {
             }
         }
         this.frameImage = this.poseInfo.frames[this.frame];
+    },
+    isStopped: function AnimatedSprite_isStopped() {
+        return this.animationDirection === ANIMATION_DIRECTION.STOPPED;
     },
 };
 

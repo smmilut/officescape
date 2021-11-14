@@ -13,6 +13,7 @@ export const TILE_TYPE = Object.freeze({
 export const CELL_CONTENT_TYPE = Object.freeze({
     NONE: "none",
     MOBSPAWNPOINT: "mobSpawnPoint",
+    WORKSPAWNPOINT: "workSpawnPoint",
 });
 
 /** Holds the level data (position of walls, etc) */

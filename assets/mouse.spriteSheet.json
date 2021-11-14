@@ -1,0 +1,39 @@
+{
+    "cellWidth": 16,
+    "cellHeight": 16,
+    "defaultPose": "WalkLeft",
+    "layout": [
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 8
+            },
+            "pose": {
+                "name": "WalkRight",
+                "facing": "Right",
+                "action": "Walk"
+            },
+            "animation": {
+                "length": 6,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 8
+            },
+            "pose": {
+                "name": "WalkLeft",
+                "facing": "Left",
+                "action": "Walk"
+            },
+            "animation": {
+                "length": 6,
+                "type": "forward",
+                "frameDuration": 0.100
+            }
+        }
+    ]
+}

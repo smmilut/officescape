@@ -74,7 +74,15 @@ const Rng = {
             }
         }
         return selectedItem;
-    }
+    },
+    /**
+     * Roll a random boolean true `zeroToOneChance` * 100 % of the time
+     * @param {float} zeroToOneChance probablity of returning true, from 0.0 to 1.0
+     * @returns {boolean} true if event happened
+     */
+    isChance: function Rng_isChance(zeroToOneChance) {
+        return this.roll() < zeroToOneChance;
+    },
 };
 
 /**

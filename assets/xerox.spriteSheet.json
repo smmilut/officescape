@@ -1,0 +1,39 @@
+{
+    "cellWidth": 16,
+    "cellHeight": 16,
+    "defaultPose": "Idle",
+    "layout": [
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "Idle",
+                "facing": "",
+                "action": "Idle"
+            },
+            "animation": {
+                "length": 2,
+                "type": "forward",
+                "frameDuration": 0.300
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "Spawning",
+                "facing": "",
+                "action": "Spawning"
+            },
+            "animation": {
+                "length": 4,
+                "type": "forwardstop",
+                "frameDuration": 0.300
+            }
+        }
+    ]
+}

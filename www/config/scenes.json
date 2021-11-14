@@ -34,7 +34,12 @@
                         "zombieLame",
                         "zombieHairy",
                         "rockerGuitar",
-                        "waterfountain"
+                        "waterfountain",
+                        "xerox",
+                        "stapler",
+                        "scissors",
+                        "mouse",
+                        "folderfly"
                     ]
                 }
             },
@@ -159,11 +164,20 @@
                                 "cellType": "wall"
                             },
                             {
-                                "noiseValue": 5.5,
+                                "noiseValue": 5.3,
                                 "cellType": "none",
                                 "content": [
                                     {
                                         "type": "mobSpawnPoint"
+                                    }
+                                ]
+                            },
+                            {
+                                "noiseValue": 5.5,
+                                "cellType": "none",
+                                "content": [
+                                    {
+                                        "type": "workSpawnPoint"
                                     }
                                 ]
                             }
@@ -199,6 +213,8 @@
                 "moveMobiles",
                 "collideMobiles",
                 "mobBehave",
+                "spawnpointBehave",
+                "workBehave",
                 "handleInput"
             ],
             "frameEnd": [
