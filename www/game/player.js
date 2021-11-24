@@ -22,25 +22,37 @@ const System_handleInput = {
         let input = queryResults.resources.input;
         for (let p of queryResults.components.player) {
             let actionName = Actions.ACTION_POSE.STAND;
+            let isKeepFrameProgress = false;
             if (input.isKeyDown(input.USER_ACTION.ATTACK)) {
+                /// user wants to attack
                 p.attack.tryApply();
             } else if (input.isKeyUp(input.USER_ACTION.ATTACK)) {
+                /// user stops attack
                 p.attack.rearm();
             }
             if (p.attack.isAttacking()) {
+                /// attack is actually in progress
                 if (p.animatedSprite.isStopped()) {
+                    /// attack has completed
                     p.attack.stop();
                 } else {
+                    /// attack still in progress
                     actionName = Actions.ACTION_POSE.ATTACK;
                 }
             }
             if (input.isKeyDown(input.USER_ACTION.LEFT)) {
+                if (p.facing.direction !== Actions.FACING.LEFT) {
+                    isKeepFrameProgress = true;
+                }
                 p.facing.direction = Actions.FACING.LEFT;
                 p.speed.incrementLeft();
                 if (!p.attack.isAttacking()) {
                     actionName = Actions.ACTION_POSE.WALK;
                 }
             } else if (input.isKeyDown(input.USER_ACTION.RIGHT)) {
+                if (p.facing.direction !== Actions.FACING.RIGHT) {
+                    isKeepFrameProgress = true;
+                }
                 p.facing.direction = Actions.FACING.RIGHT;
                 p.speed.incrementRight();
                 if (!p.attack.isAttacking()) {
@@ -61,6 +73,7 @@ const System_handleInput = {
             p.animatedSprite.setPose({
                 action: actionName,
                 facing: p.facing.direction,
+                isKeepFrameProgress: isKeepFrameProgress,
             });
         }
     },

@@ -1,5 +1,6 @@
 import * as FileUtils from "../utils/fileUtils.js";
 import * as HttpUtils from "../utils/httpUtils.js";
+import * as Interpolation from "../utils/interpolation.js";
 /**
  * Manage image sprites
  * @module sprites
@@ -226,9 +227,10 @@ const AnimatedSprite = {
     },
     /**
      * set animation pose
-     * @param {object} poseInfo can be { name } or { action, facing }
+     * @param {object} poseInfo can be { name } or { action, facing, isKeepFrameProgress }
      */
     setPose: function AnimatedSprite_setPose(poseInfo) {
+        const isKeepFrameProgress = poseInfo.isKeepFrameProgress;
         let poseName = poseInfo.name;
         if (poseInfo.action && poseInfo.facing) {
             poseName = poseInfo.action + poseInfo.facing;
@@ -236,19 +238,29 @@ const AnimatedSprite = {
         if (poseName !== undefined && this.pose != poseName) {
             // the pose changed
             this.pose = poseName;
-            // reset animation
-            this.frameTime = 0;
+            if (!isKeepFrameProgress) {
+                // reset animation
+                this.frameTime = 0;
+            }
             this.poseInfo = this.sheetLayout[this.pose];
             switch (this.poseInfo.animation.type) {
                 case ANIMATION_TYPE.FORWARD:
                 case ANIMATION_TYPE.PINGPONG:
                 case ANIMATION_TYPE.FORWARDSTOP:
-                    this.frame = 0;
+                    if (isKeepFrameProgress) {
+                        this.frame = Interpolation.clamp(this.frame, 0, this.poseInfo.animation.length - 1);
+                    } else {
+                        this.frame = 0;
+                    }
                     this.animationDirection = ANIMATION_DIRECTION.FORWARD;
                     break;
                 case ANIMATION_TYPE.REVERSE:
-                    // last frame
-                    this.frame = this.poseInfo.animation.length - 1;
+                    if (isKeepFrameProgress) {
+                        this.frame = Interpolation.clamp(this.frame, 0, this.poseInfo.animation.length - 1);
+                    } else {
+                        // last frame
+                        this.frame = this.poseInfo.animation.length - 1;
+                    }
                     this.animationDirection = ANIMATION_DIRECTION.BACKWARD;
                     break;
                 case ANIMATION_TYPE.NONE:
@@ -290,9 +302,6 @@ const AnimatedSprite = {
                 case ANIMATION_TYPE.PINGPONG:
                     this.animationDirection = -this.animationDirection;
                     this.frame += this.animationDirection;
-                    break;
-                default:
-                    console.warn("unexpected case");
                     break;
             }
         }
