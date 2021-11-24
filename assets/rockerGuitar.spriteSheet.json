@@ -14,7 +14,7 @@
                 "action": "Stand"
             },
             "animation": {
-                "length": 3,
+                "length": 4,
                 "type": "forward",
                 "frameDuration": 0.200
             }
@@ -30,7 +30,7 @@
                 "action": "Walk"
             },
             "animation": {
-                "length": 3,
+                "length": 4,
                 "type": "forward",
                 "frameDuration": 0.200
             }
@@ -46,7 +46,7 @@
                 "action": "Stand"
             },
             "animation": {
-                "length": 3,
+                "length": 4,
                 "type": "forward",
                 "frameDuration": 0.200
             }
@@ -62,8 +62,40 @@
                 "action": "Walk"
             },
             "animation": {
-                "length": 3,
+                "length": 4,
                 "type": "forward",
+                "frameDuration": 0.200
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "AttackRight",
+                "facing": "Right",
+                "action": "Attack"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forwardstop",
+                "frameDuration": 0.200
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 14
+            },
+            "pose": {
+                "name": "AttackLeft",
+                "facing": "Left",
+                "action": "Attack"
+            },
+            "animation": {
+                "length": 3,
+                "type": "forwardstop",
                 "frameDuration": 0.200
             }
         }

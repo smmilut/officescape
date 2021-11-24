@@ -16,27 +16,47 @@ const System_handleInput = {
     name: "handleInput",
     resourceQuery: ["input"],
     componentQueries: {
-        player: ["speed", "facing", "animatedSprite", "tagPlayer"],
+        player: ["speed", "facing", "animatedSprite", "attack", "tagPlayer"],
     },
     run: function handleInput(queryResults) {
         let input = queryResults.resources.input;
         for (let p of queryResults.components.player) {
             let actionName = Actions.ACTION_POSE.STAND;
+            if (input.isKeyDown(input.USER_ACTION.ATTACK)) {
+                p.attack.tryApply();
+            } else if (input.isKeyUp(input.USER_ACTION.ATTACK)) {
+                p.attack.rearm();
+            }
+            if (p.attack.isAttacking()) {
+                if (p.animatedSprite.isStopped()) {
+                    p.attack.stop();
+                } else {
+                    actionName = Actions.ACTION_POSE.ATTACK;
+                }
+            }
             if (input.isKeyDown(input.USER_ACTION.LEFT)) {
-                p.speed.incrementLeft();
-                actionName = Actions.ACTION_POSE.WALK;
                 p.facing.direction = Actions.FACING.LEFT;
+                p.speed.incrementLeft();
+                if (!p.attack.isAttacking()) {
+                    actionName = Actions.ACTION_POSE.WALK;
+                }
             } else if (input.isKeyDown(input.USER_ACTION.RIGHT)) {
-                p.speed.incrementRight();
-                actionName = Actions.ACTION_POSE.WALK;
                 p.facing.direction = Actions.FACING.RIGHT;
+                p.speed.incrementRight();
+                if (!p.attack.isAttacking()) {
+                    actionName = Actions.ACTION_POSE.WALK;
+                }
             }
             if (input.isKeyDown(input.USER_ACTION.DOWN)) {
                 p.speed.incrementDown();
-                actionName = Actions.ACTION_POSE.WALK;
+                if (!p.attack.isAttacking()) {
+                    actionName = Actions.ACTION_POSE.WALK;
+                }
             } else if (input.isKeyDown(input.USER_ACTION.UP)) {
                 p.speed.incrementUp();
-                actionName = Actions.ACTION_POSE.WALK;
+                if (!p.attack.isAttacking()) {
+                    actionName = Actions.ACTION_POSE.WALK;
+                }
             }
             p.animatedSprite.setPose({
                 action: actionName,
@@ -67,6 +87,7 @@ async function spawnNewPlayer(engine, spriteServer, tileCenter) {
             increment: 10.0,
         }))
         .addComponent(Actions.newComponent_Facing())
+        .addComponent(Actions.newComponent_Attack())
         .addComponent(drawPosition)
         .addComponent(collisionRectangle)
         .addComponent(animatedSprite)

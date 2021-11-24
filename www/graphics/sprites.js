@@ -245,6 +245,7 @@ const AnimatedSprite = {
                 case ANIMATION_TYPE.FORWARDSTOP:
                     this.frame = 0;
                     this.animationDirection = ANIMATION_DIRECTION.FORWARD;
+                    break;
                 case ANIMATION_TYPE.REVERSE:
                     // last frame
                     this.frame = this.poseInfo.animation.length - 1;
@@ -279,7 +280,7 @@ const AnimatedSprite = {
         if (this.frame >= animationLength || this.frame < 0) {
             switch (this.poseInfo.animation.type) {
                 case ANIMATION_TYPE.FORWARDSTOP:
-                    this.frame = 0;
+                    this.frame = animationLength - 1;
                     this.animationDirection = ANIMATION_DIRECTION.STOPPED;
                     break;
                 case ANIMATION_TYPE.FORWARD:

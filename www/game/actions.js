@@ -32,6 +32,35 @@ export function newComponent_Facing(initOptions) {
     };
 };
 
+const Component_Attack = {
+    name: "attack",
+    init: function Attack_init() {
+        this._isAttacking = false;
+        this._isAttackReady = true;
+    },
+    tryApply: function Attack_tryApply() {
+        if (this._isAttackReady) {
+            this._isAttacking = true;
+            this._isAttackReady = false;
+        }
+    },
+    stop: function Attack_stop() {
+        this._isAttacking = false;
+    },
+    rearm: function Attack_rearm() {
+        this._isAttackReady = true;
+    },
+    isAttacking: function Attack_isAttacking() {
+        return this._isAttacking;
+    },
+};
+
+export function newComponent_Attack(_initOptions) {
+    const attack = Object.create(Component_Attack);
+    attack.init();
+    return attack;
+};
+
 /** Call when loading */
 export function init(engine) {
     /// nothing for now

@@ -75,6 +75,11 @@
                         },
                         {
                             "type": "gamepadButton",
+                            "button": "xbox_X",
+                            "action": "attack"
+                        },
+                        {
+                            "type": "gamepadButton",
                             "button": "xbox_START",
                             "action": "menu"
                         },
@@ -132,6 +137,11 @@
                             "type": "keyboardKey",
                             "button": "s",
                             "action": "down"
+                        },
+                        {
+                            "type": "keyboardKey",
+                            "button": "h",
+                            "action": "attack"
                         }
                     ]
                 }
