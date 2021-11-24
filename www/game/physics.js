@@ -281,9 +281,7 @@ const System_collideMobiles = {
     run: function collideMobiles(queryResults) {
         for (let mobile of queryResults.components.mobiles) {
             mobile.collisionRectangle.updatePosition(mobile.worldPosition);
-            //console.log("mobile rectangle :", mobile.collisionRectangle);
             for (let obstacle of queryResults.components.obstacles) {
-                //console.log("wall rectangles :", obstacle.collisionRectangles, obstacle.worldPosition);
                 const collision = obstacle.collisionRectangles.collide(mobile.collisionRectangle);
                 if (collision.hasCollision) {
                     mobile.worldPosition.x += collision.pushback.x;

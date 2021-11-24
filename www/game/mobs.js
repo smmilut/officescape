@@ -293,12 +293,15 @@ const WORK_STATES = Object.freeze({
     STANDING: 0,
     WALKING: 1,
     ANGRY: 2,
+    ATTACKED: 3,
+    DEAD: 4,
 });
 
 function newComponent_workState(initOptions) {
     initOptions = initOptions || {};
     return {
         name: "workState",
+        WORK_STATES: WORK_STATES,
         state: initOptions.state,
     };
 };
@@ -338,8 +341,8 @@ function spawnWork(engine, spriteServer, workRng, position) {
     const drawPosition = animatedSprite.getComponent_drawPosition();
     const collisionRectangle = Physics.newCollisionRectangle({
         size: {
-            x: 6,
-            y: 2,
+            x: 12,
+            y: 8,
         },
         positionRelativeToAnchor: {
             x: 0,
@@ -415,7 +418,7 @@ const System_workBehave = {
     name: "workBehave",
     resourceQuery: ["rngg", "time"],
     componentQueries: {
-        work: ["speed", "facing", "animatedSprite", "workState", "tagWork"],
+        works: ["speed", "facing", "animatedSprite", "workState", "tagWork"],
     },
     run: function workBehave(queryResults) {
         const time = queryResults.resources.time;
@@ -424,45 +427,54 @@ const System_workBehave = {
         }
         const rngg = queryResults.resources.rngg;
         const workRng = rngg.getRng("workRng");
-        for (let w of queryResults.components.work) {
+        for (const work of queryResults.components.works) {
             /* TODO : program the real behaviour
                 This is for now only a simple trick to get things moving.
             */
-            if (workRng.isChance(0.02)) {
-                /// pick a random direction
-                const randDirectionChoiceX = workRng.roll();
-                const randDirectionChoiceY = workRng.roll();
-                if (randDirectionChoiceX < 0.3) {
-                    w.speed.x = -1;
-                } else if (randDirectionChoiceX < 0.6) {
-                    w.speed.x = 1;
-                }
-                if (randDirectionChoiceY < 0.3) {
-                    w.speed.y = -1;
-                } else if (randDirectionChoiceY < 0.6) {
-                    w.speed.y = 1;
-                }
+            let actionName = Actions.ACTION_POSE.STAND;
+            if (work.workState.state === work.workState.WORK_STATES.ATTACKED) {
+                work.speed.x = 0;
+                work.speed.y = 0;
+                work.facing.direction = work.facing.FACING.NONE;
+                actionName = Actions.ACTION_POSE.ATTACKED;
             } else {
-                /// somehow continue in the direction
-                if (w.speed.x > 0) {
-                    w.speed.incrementRight();
+                actionName = Actions.ACTION_POSE.WALK;
+                if (workRng.isChance(0.02)) {
+                    /// pick a random direction
+                    const randDirectionChoiceX = workRng.roll();
+                    const randDirectionChoiceY = workRng.roll();
+                    if (randDirectionChoiceX < 0.3) {
+                        work.speed.x = -1;
+                    } else if (randDirectionChoiceX < 0.6) {
+                        work.speed.x = 1;
+                    }
+                    if (randDirectionChoiceY < 0.3) {
+                        work.speed.y = -1;
+                    } else if (randDirectionChoiceY < 0.6) {
+                        work.speed.y = 1;
+                    }
                 } else {
-                    w.speed.incrementLeft();
+                    /// somehow continue in the direction
+                    if (work.speed.x > 0) {
+                        work.speed.incrementRight();
+                    } else {
+                        work.speed.incrementLeft();
+                    }
+                    if (work.speed.y > 0) {
+                        work.speed.incrementDown();
+                    } else {
+                        work.speed.incrementUp();
+                    }
                 }
-                if (w.speed.y > 0) {
-                    w.speed.incrementDown();
-                } else {
-                    w.speed.incrementUp();
+                if (work.speed.x >= 0) {
+                    work.facing.direction = Actions.FACING.RIGHT;
+                } else if (work.speed.x < 0) {
+                    work.facing.direction = Actions.FACING.LEFT;
                 }
             }
-            if (w.speed.x > 0) {
-                w.facing.direction = Actions.FACING.RIGHT;
-            } else if (w.speed.x < 0) {
-                w.facing.direction = Actions.FACING.LEFT;
-            }
-            w.animatedSprite.setPose({
-                action: Actions.ACTION_POSE.WALK,
-                facing: w.facing.direction
+            work.animatedSprite.setPose({
+                action: actionName,
+                facing: work.facing.direction,
             });
         }
     },

@@ -13,6 +13,8 @@ export const ACTION_POSE = Object.freeze({
     SPAWNING: "Spawning",
     WALKPANIC: "WalkPanic",
     PINNED: "Pinned",
+    ATTACKED: "Attacked",
+    DEAD: "Dead",
     JUMP: "Jump",
     ATTACK: "Attack",
 });
@@ -28,6 +30,7 @@ export function newComponent_Facing(initOptions) {
     initOptions = initOptions || {};
     return {
         name: "facing",
+        FACING: FACING,
         direction: initOptions.direction || FACING.LEFT,
     };
 };

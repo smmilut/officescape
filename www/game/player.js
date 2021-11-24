@@ -16,63 +16,63 @@ const System_handleInput = {
     name: "handleInput",
     resourceQuery: ["input"],
     componentQueries: {
-        player: ["speed", "facing", "animatedSprite", "attack", "tagPlayer"],
+        players: ["speed", "facing", "animatedSprite", "attack", "tagPlayer"],
     },
     run: function handleInput(queryResults) {
         let input = queryResults.resources.input;
-        for (let p of queryResults.components.player) {
+        for (const player of queryResults.components.players) {
             let actionName = Actions.ACTION_POSE.STAND;
             let isKeepFrameProgress = false;
             if (input.isKeyDown(input.USER_ACTION.ATTACK)) {
                 /// user wants to attack
-                p.attack.tryApply();
+                player.attack.tryApply();
             } else if (input.isKeyUp(input.USER_ACTION.ATTACK)) {
                 /// user stops attack
-                p.attack.rearm();
+                player.attack.rearm();
             }
-            if (p.attack.isAttacking()) {
+            if (player.attack.isAttacking()) {
                 /// attack is actually in progress
-                if (p.animatedSprite.isStopped()) {
+                if (player.animatedSprite.isStopped()) {
                     /// attack has completed
-                    p.attack.stop();
+                    player.attack.stop();
                 } else {
                     /// attack still in progress
                     actionName = Actions.ACTION_POSE.ATTACK;
                 }
             }
             if (input.isKeyDown(input.USER_ACTION.LEFT)) {
-                if (p.facing.direction !== Actions.FACING.LEFT) {
+                if (player.facing.direction !== Actions.FACING.LEFT) {
                     isKeepFrameProgress = true;
                 }
-                p.facing.direction = Actions.FACING.LEFT;
-                p.speed.incrementLeft();
-                if (!p.attack.isAttacking()) {
+                player.facing.direction = Actions.FACING.LEFT;
+                player.speed.incrementLeft();
+                if (!player.attack.isAttacking()) {
                     actionName = Actions.ACTION_POSE.WALK;
                 }
             } else if (input.isKeyDown(input.USER_ACTION.RIGHT)) {
-                if (p.facing.direction !== Actions.FACING.RIGHT) {
+                if (player.facing.direction !== Actions.FACING.RIGHT) {
                     isKeepFrameProgress = true;
                 }
-                p.facing.direction = Actions.FACING.RIGHT;
-                p.speed.incrementRight();
-                if (!p.attack.isAttacking()) {
+                player.facing.direction = Actions.FACING.RIGHT;
+                player.speed.incrementRight();
+                if (!player.attack.isAttacking()) {
                     actionName = Actions.ACTION_POSE.WALK;
                 }
             }
             if (input.isKeyDown(input.USER_ACTION.DOWN)) {
-                p.speed.incrementDown();
-                if (!p.attack.isAttacking()) {
+                player.speed.incrementDown();
+                if (!player.attack.isAttacking()) {
                     actionName = Actions.ACTION_POSE.WALK;
                 }
             } else if (input.isKeyDown(input.USER_ACTION.UP)) {
-                p.speed.incrementUp();
-                if (!p.attack.isAttacking()) {
+                player.speed.incrementUp();
+                if (!player.attack.isAttacking()) {
                     actionName = Actions.ACTION_POSE.WALK;
                 }
             }
-            p.animatedSprite.setPose({
+            player.animatedSprite.setPose({
                 action: actionName,
-                facing: p.facing.direction,
+                facing: player.facing.direction,
                 isKeepFrameProgress: isKeepFrameProgress,
             });
         }
@@ -85,8 +85,8 @@ async function spawnNewPlayer(engine, spriteServer, tileCenter) {
     const drawPosition = animatedSprite.getComponent_drawPosition();
     const collisionRectangle = Physics.newCollisionRectangle({
         size: {
-            x: 6,
-            y: 2,
+            x: 10,
+            y: 3,
         },
         positionRelativeToAnchor: {
             x: 0,

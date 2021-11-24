@@ -232,10 +232,12 @@ const AnimatedSprite = {
     setPose: function AnimatedSprite_setPose(poseInfo) {
         const isKeepFrameProgress = poseInfo.isKeepFrameProgress;
         let poseName = poseInfo.name;
-        if (poseInfo.action && poseInfo.facing) {
-            poseName = poseInfo.action + poseInfo.facing;
+        if (poseName === undefined) {
+            let action = poseInfo.action || "";
+            let facing = poseInfo.facing || "";
+            poseName = action + facing;
         }
-        if (poseName !== undefined && this.pose != poseName) {
+        if (this.pose !== poseName) {
             // the pose changed
             this.pose = poseName;
             if (!isKeepFrameProgress) {

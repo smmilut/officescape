@@ -34,6 +34,38 @@
                 "type": "forward",
                 "frameDuration": 0.100
             }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 8
+            },
+            "pose": {
+                "name": "Attacked",
+                "facing": "",
+                "action": "Attacked"
+            },
+            "animation": {
+                "length": 2,
+                "type": "forward",
+                "frameDuration": 0.200
+            }
+        },
+        {
+            "drawCenter": {
+                "x": 8,
+                "y": 8
+            },
+            "pose": {
+                "name": "Dead",
+                "facing": "",
+                "action": "Dead"
+            },
+            "animation": {
+                "length": 1,
+                "type": "forwardstop",
+                "frameDuration": 1.000
+            }
         }
     ]
 }

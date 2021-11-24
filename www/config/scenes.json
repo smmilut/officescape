@@ -222,6 +222,7 @@
                 "moveCamera",
                 "moveMobiles",
                 "collideMobiles",
+                "collideCharacters",
                 "mobBehave",
                 "spawnpointBehave",
                 "workBehave",

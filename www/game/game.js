@@ -3,6 +3,7 @@ import * as LevelMap from "./levelMap.js";
 import * as Physics from "./physics.js";
 import * as Player from "./player.js";
 import * as Mobs from "./mobs.js";
+import * as Damage from "./damage.js";
 
 /**
  * Game-specific modules
@@ -16,6 +17,7 @@ function initSubModules(engine) {
     Physics.init(engine);
     Player.init(engine);
     Mobs.init(engine);
+    Damage.init(engine);
 }
 
 /** Call when loading */

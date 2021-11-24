@@ -193,14 +193,14 @@ const System_moveCamera = {
     name: "moveCamera",
     resourceQuery: ["camera", "time", "levelMap"],
     componentQueries: {
-        player: ["worldPosition", "tagPlayer"],
+        players: ["worldPosition", "tagPlayer"],
     },
     run: function moveCamera(queryResults) {
         let camera = queryResults.resources.camera;
         let time = queryResults.resources.time;
         let levelMap = queryResults.resources.levelMap;
-        for (let p of queryResults.components.player) {
-            camera.setTarget(p.worldPosition);
+        for (let player of queryResults.components.players) {
+            camera.setTarget(player.worldPosition);
             camera.snapTargetToEdges(levelMap);
             camera.updateAnimation(time.dt);
         }
