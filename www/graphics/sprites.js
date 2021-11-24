@@ -245,6 +245,9 @@ const AnimatedSprite = {
                 this.frameTime = 0;
             }
             this.poseInfo = this.sheetLayout[this.pose];
+            if (this.poseInfo === undefined) {
+                console.warn("pose undefined", poseName);
+            }
             switch (this.poseInfo.animation.type) {
                 case ANIMATION_TYPE.FORWARD:
                 case ANIMATION_TYPE.PINGPONG:

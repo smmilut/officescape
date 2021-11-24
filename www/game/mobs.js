@@ -431,7 +431,7 @@ const System_workBehave = {
             /* TODO : program the real behaviour
                 This is for now only a simple trick to get things moving.
             */
-            let actionName = Actions.ACTION_POSE.STAND;
+            let actionName;
             if (work.workState.state === work.workState.WORK_STATES.ATTACKED) {
                 work.speed.x = 0;
                 work.speed.y = 0;
@@ -466,11 +466,14 @@ const System_workBehave = {
                         work.speed.incrementUp();
                     }
                 }
-                if (work.speed.x >= 0) {
+                if (work.speed.x > 0) {
                     work.facing.direction = Actions.FACING.RIGHT;
-                } else if (work.speed.x < 0) {
+                } else {
                     work.facing.direction = Actions.FACING.LEFT;
                 }
+            }
+            if (actionName === undefined) {
+                console.warn("action name undefined ?!");
             }
             work.animatedSprite.setPose({
                 action: actionName,
