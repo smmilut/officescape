@@ -75,6 +75,16 @@
                         },
                         {
                             "type": "gamepadButton",
+                            "button": "xbox_UP",
+                            "action": "up"
+                        },
+                        {
+                            "type": "gamepadButton",
+                            "button": "xbox_DOWN",
+                            "action": "down"
+                        },
+                        {
+                            "type": "gamepadButton",
                             "button": "xbox_X",
                             "action": "attack"
                         },
